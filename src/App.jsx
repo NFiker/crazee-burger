@@ -1,5 +1,7 @@
+import LoginPage from "./components/pages/LoginPage";
+
 function App() {
-  return <div>Hello world</div>;
+  return <LoginPage />;
 }
 
 export default App;
