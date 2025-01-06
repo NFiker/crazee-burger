@@ -14,6 +14,17 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+
+  import { createGlobalStyle } from 'styled-components';
+
+  @font-face {
+    font-family: 'Amatic SC';
+    src: url('/fonts/Amatic_SC/AmaticSC-Regular.ttf') format('truetype'),
+         url('/fonts/Amatic_SC/AmaticSC-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 `;
 
 export default GlobalStyle;

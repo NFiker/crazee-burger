@@ -38,6 +38,6 @@ export default function LoginForm() {
   );
 }
 
-const LoginFormStyled = styled.div`
+const LoginFormStyled = styled.form`
   background-color: green;
 `;
