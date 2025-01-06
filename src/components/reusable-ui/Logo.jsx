@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default function Logo() {
-  return <LogoStyled>Logo</LogoStyled>;
+  return <LogoStyled>LOGO CRAZEE BURGER</LogoStyled>;
 }
 
 const LogoStyled = styled.div`
