@@ -1,0 +1,19 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Empêche le défilement */
+    font-family: 'Arial', sans-serif; /* Exemple de police de base */
+    background-color: #f4f4f4; /* Couleur de fond par défaut */
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+`;
+
+export default GlobalStyle;
