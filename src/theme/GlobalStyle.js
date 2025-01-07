@@ -15,8 +15,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  import { createGlobalStyle } from 'styled-components';
-
   @font-face {
     font-family: 'Amatic SC';
     src: url('/fonts/Amatic_SC/AmaticSC-Regular.ttf') format('truetype'),
