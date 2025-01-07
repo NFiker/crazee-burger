@@ -35,6 +35,7 @@ export default [
       ],
       "react/no-unescaped-entities": [
         "error",
+        // "react/prop-types": "off",
         {
           forbid: [">", "}"], // Désactive les erreurs pour les apostrophes et guillemets simples
         },
