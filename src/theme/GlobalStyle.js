@@ -23,6 +23,14 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans/OpenSans-Regular.ttf') format('truetype'),
+         url('/fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 `;
 
 export default GlobalStyle;
