@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import NavLogin from "./NavLogin";
-import NavLogo from "./NavLogo";
+import Logo from "../../reusable-ui/Logo";
 
 export default function Navbar({ username }) {
   return (
     <NavbarStyled>
-      <NavLogo />
+      <Logo />
       <NavLogin username={username} />
     </NavbarStyled>
   );
