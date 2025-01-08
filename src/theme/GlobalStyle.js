@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./index";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -6,9 +7,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Empêche le défilement */
-    font-family: 'Arial', sans-serif; /* Exemple de police de base */
-    background-color: #f4f4f4; /* Couleur de fond par défaut */
+    overflow: hidden; 
+    font-family: ${theme.fonts.style.uiFont}; 
+    background-color: #f4f4f4; 
   }
 
   *, *::before, *::after {

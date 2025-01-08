@@ -5,7 +5,6 @@ const colors = {
   background_white: "#f5f5f7",
   background_dark: "#292729",
   primary: "#ffa01b",
-  primary_burger: "#ff9f1b",
   green: "green",
   success: "#60bd4f",
   red: "#e25549",
@@ -57,6 +56,7 @@ const fonts = {
     uiFont: "Open Sans, sans-serif",
   },
 };
+
 const gridUnit = 8;
 const borderRadius = {
   subtle: 1,
