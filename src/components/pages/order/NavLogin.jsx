@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Profile from "./Profile";
 
 export default function Navlogin({ username }) {
   return (
     <NavLoginStyled>
-      Navlogin
-      <h1>Bonjour {username} </h1>
-      <Link to="/">
-        <button>Se déconnecter</button>
-      </Link>
+      {/* <div className="admin-button">Admin Button</div> */}
+      <Profile username={username} />
     </NavLoginStyled>
   );
 }
 
 const NavLoginStyled = styled.div`
-  background: purple;
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+
+  /* .admin-button {
+    background: lightblue;
+  } */
 `;
