@@ -1,17 +1,12 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import NavLogin from "./NavLogin";
+import NavLogo from "./NavLogo";
 
 export default function Navbar({ username }) {
   return (
     <NavbarStyled>
-      <div className="navlogo">Navlogo</div>
-      <div className="navlogin">
-        Navlogin
-        <h1>Bonjour {username} </h1>
-        <Link to="/">
-          <button>Se déconnecter</button>
-        </Link>
-      </div>
+      <NavLogo />
+      <NavLogin username={username} />
     </NavbarStyled>
   );
 }
@@ -21,11 +16,4 @@ const NavbarStyled = styled.nav`
   height: 10vh;
   display: flex;
   justify-content: space-between;
-
-  .navlogo {
-    background: pink;
-  }
-  .navlogin {
-    background: purple;
-  }
 `;
