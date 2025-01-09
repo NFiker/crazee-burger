@@ -13,7 +13,20 @@ export default function Menu() {
     <SimpleBar>
       <MenuStyled>
         {menu.map((product) => {
-          return <div className="product">{product.title}</div>;
+          return (
+            <div className="product">
+              <div className="image">
+                <img src={product.imageSource} alt={product.title} />
+              </div>
+              <div className="info-text">
+                <div className="description">
+                  <div className="title">{product.title}</div>
+                  <div className="price">{product.price}</div>
+                  <button className="add-button">Ajouter</button>
+                </div>
+              </div>
+            </div>
+          );
         })}
       </MenuStyled>
     </SimpleBar>
@@ -31,5 +44,20 @@ const MenuStyled = styled.div`
     background: blueviolet;
     width: 240px;
     height: 330px;
+  }
+
+  .image {
+    border: 1px solid fuchsia;
+    height: auto;
+    width: 100px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .description {
+    border: 1px solid fuchsia;
   }
 `;
