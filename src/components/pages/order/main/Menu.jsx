@@ -1,21 +1,26 @@
 import styled from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import { useState } from "react";
+import { theme } from "../../../../theme/index";
+
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 export default function Menu() {
   const [menu, setMenu] = useState(fakeMenu2);
 
   return (
-    <MenuStyled>
-      {menu.map((product) => {
-        return <div className="product">{product.title}</div>;
-      })}
-    </MenuStyled>
+    <SimpleBar>
+      <MenuStyled>
+        {menu.map((product) => {
+          return <div className="product">{product.title}</div>;
+        })}
+      </MenuStyled>
+    </SimpleBar>
   );
 }
 
 const MenuStyled = styled.div`
-  background: purple;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 60px;
