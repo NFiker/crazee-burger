@@ -5,6 +5,7 @@ import { theme } from "../../../../theme/index";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
+import Product from "./Product";
 
 export default function Menu() {
   const [menu, setMenu] = useState(fakeMenu2);
@@ -14,18 +15,11 @@ export default function Menu() {
       <MenuStyled>
         {menu.map((product) => {
           return (
-            <div className="product">
-              <div className="image">
-                <img src={product.imageSource} alt={product.title} />
-              </div>
-              <div className="info-text">
-                <div className="description">
-                  <div className="title">{product.title}</div>
-                  <div className="price">{product.price}</div>
-                  <button className="add-button">Ajouter</button>
-                </div>
-              </div>
-            </div>
+            <Product
+              title={product.title}
+              imageSource={product.imageSource}
+              price={product.price}
+            />
           );
         })}
       </MenuStyled>
@@ -39,12 +33,6 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
-
-  .product {
-    background: blueviolet;
-    width: 240px;
-    height: 330px;
-  }
 
   .image {
     border: 1px solid fuchsia;
