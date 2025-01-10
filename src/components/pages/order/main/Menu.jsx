@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import { useState } from "react";
 import { theme } from "../../../../theme/index";
+import { formatPrice } from "../../../../utils/maths";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
-import Product from "./Product";
+import Card from "../../../reusable-ui/Card";
 
 export default function Menu() {
   const [menu, setMenu] = useState(fakeMenu2);
@@ -13,14 +14,15 @@ export default function Menu() {
   return (
     <SimpleBar>
       <MenuStyled>
-        {menu.map((product) => {
+        {menu.map(({ id, title, imageSource, price }) => {
           return (
-            // <Product
-            //   title={product.title}
-            //   imageSource={product.imageSource}
-            //   price={product.price}
-            // />
-            <Product {...product} />
+            <Card
+              key={id}
+              title={title}
+              imageSource={imageSource}
+              leftDescription={formatPrice(price)}
+            />
+            // <Card {...card} /> non utilisable pour des reusable componenents
           );
         })}
       </MenuStyled>
