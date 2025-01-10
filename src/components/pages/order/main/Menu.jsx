@@ -34,19 +34,4 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
-
-  .image {
-    border: 1px solid fuchsia;
-    height: auto;
-    width: 100px;
-
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  .description {
-    border: 1px solid fuchsia;
-  }
 `;
