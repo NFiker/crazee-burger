@@ -7,9 +7,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     font-family: ${theme.fonts.style.uiFont}; 
-    background-color: #f4f4f4; 
+    background-color: #f4f4f4;
   }
 
   *, *::before, *::after {
@@ -32,6 +32,32 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  /* Global styles for SimpleBar */
+  .simplebar-scrollbar:before {
+    background-color: ${theme.colors.greyDark}; 
+  }
+
+  .simplebar-content-wrapper {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .simplebar-track {
+    &.simplebar-vertical {
+      width: .8rem; 
+    }
+    &.simplebar-horizontal {
+      height: .8rem; 
+    }
+  }
+
+  /* .simplebar-mask {
+    height: 100%;
+  } */
+
+  .simplebar-placeholder {
+    height: auto !important;
+  }
 `;
 
 export default GlobalStyle;
