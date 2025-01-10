@@ -8,12 +8,12 @@ export default function Product({ title, price, imageSource }) {
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
-      <div className="info-text">
+      <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">
-          <div className="price">{price}</div>
-          <div className="add-button">
-            <PrimaryButton className="add-product" label="Ajouter" />
+          <div className="left-description">{price}</div>
+          <div className="right-description">
+            <PrimaryButton className="primary-button" label="Ajouter" />
           </div>
         </div>
       </div>
@@ -25,40 +25,74 @@ const ProductStyled = styled.div`
   background: ${theme.colors.white};
   width: 200px;
   height: 300px;
-  display: grid;
-  grid-template-rows: 65% 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
-  padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
 
+  /* * {
+    border: 1px solid red;
+  } */
+
   .image {
     width: 100%;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
+  }
+
   .title {
-    padding-left: 1rem;
     font-family: ${theme.fonts.style.brandFont};
     font-size: ${theme.fonts.size.P4};
-    font-family: ${theme.fonts.style.brandFont};
+    font-weight: ${theme.fonts.weights.semiBold};
+    color: ${theme.colors.dark};
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .info-text {
-    border: 1px solid fuchsia;
+  .text-info {
+    width: 100%;
+    height: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
+    justify-content: space-around;
+    /* padding-top: 10px; */
 
-  .description {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .left-description {
+        font-weight: ${theme.fonts.weights.bold};
+        color: ${theme.colors.primary};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .right-description {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .primary-button {
+          padding: 10px 20px;
+        }
+      }
+    }
   }
 `;

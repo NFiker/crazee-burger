@@ -17,7 +17,7 @@ export const fakeMenu1 = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
 
 export const fakeMenu2 = [
   {
@@ -32,7 +32,7 @@ export const fakeMenu2 = [
   {
     id: 2,
     imageSource: "/images/burger-vegan.png",
-    title: "Vegan Burger",
+    title: "Vegan Burgerefrrgfrgfrgf",
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
@@ -110,4 +110,4 @@ export const fakeMenu2 = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
