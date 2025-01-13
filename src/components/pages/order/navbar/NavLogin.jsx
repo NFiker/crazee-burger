@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Profile from "./Profile";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { GrUserAdmin } from "react-icons/gr";
 import NavbarRightSideIncomplet from "./NavbarRightSideIncomplet";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { theme } from "../../../../theme/index";
 import { useState } from "react";
+import ToastAdmin from "./ToastAdmin";
+import { theme } from "../../../../theme/index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Navlogin({ username }) {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -15,7 +16,7 @@ export default function Navlogin({ username }) {
   const notify = () => {
     if (!isAdmin) {
       toast.info("Mode admin activé", {
-        icon: <GrUserAdmin size={30} />,
+        icon: <GrUserAdmin size={30} color={"#2B77AA"} />,
         theme: "dark",
         position: "bottom-right",
         autoClose: 5000,
@@ -36,7 +37,7 @@ export default function Navlogin({ username }) {
         labelIfUnchecked="Activer le mode admin"
         onToggle={notify}
       />
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <ToastAdmin />
       <Profile username={username} />
     </NavLoginStyled>
   );
@@ -47,22 +48,4 @@ const NavLoginStyled = styled.div`
   align-items: center;
   padding-right: 50px;
   gap: 40px;
-
-  .toaster {
-    max-width: 300px;
-  }
-
-  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background: ${theme.colors.background_dark};
-  }
-
-  .body-toast {
-    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-      margin-right: 20px;
-      margin-left: 5px;
-    }
-    div {
-      line-height: 1.3em;
-    }
-  }
 `;
