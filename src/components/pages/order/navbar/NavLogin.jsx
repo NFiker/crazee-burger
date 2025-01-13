@@ -7,20 +7,27 @@ import { GrUserAdmin } from "react-icons/gr";
 import NavbarRightSideIncomplet from "./NavbarRightSideIncomplet";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import { theme } from "../../../../theme/index";
+import { useState } from "react";
 
 export default function Navlogin({ username }) {
-  const notify = () =>
-    toast.info("Mode admin activé", {
-      icon: <GrUserAdmin size={30} />,
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const notify = () => {
+    if (!isAdmin) {
+      toast.info("Mode admin activé", {
+        icon: <GrUserAdmin size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    setIsAdmin(!isAdmin);
+  };
 
   return (
     <NavLoginStyled>
