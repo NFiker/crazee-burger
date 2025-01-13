@@ -17,6 +17,7 @@ const NavLoginStyled = styled.div`
   display: flex;
   align-items: center;
   padding-right: 50px;
+  gap: 40px;
 
   /* .admin-button {
     background: lightblue;

@@ -1,4 +1,3 @@
-import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../../theme";
 import { ToastContainer } from "react-toastify";
@@ -8,7 +7,10 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 export default function NavbarRightSideIncomplet() {
   return (
     <NavbarRightSideIncompletStyled>
-      <ToggleButton />
+      <ToggleButton
+        labelIfChecked="Désactiver le mode admin"
+        labelIfUnchecked="Activer le mode admin"
+      />
       <ToastContainer className="toaster" bodyClassName="body-toast" />
     </NavbarRightSideIncompletStyled>
   );
