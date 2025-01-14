@@ -26,14 +26,19 @@ export default function Menu() {
           );
         })}
       </MenuStyled>
+      //{" "}
     </SimpleBar>
   );
 }
 
 const MenuStyled = styled.div`
+  border: 3px solid blue;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
+  box-shadow: 0 0 20px 8 rgba(0, 0, 0, 0.2) inset;
+  /* overflow: scroll; */
 `;
