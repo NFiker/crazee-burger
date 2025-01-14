@@ -17,7 +17,6 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-  border: 3px solid green;
   overflow: hidden;
   display: grid;
   background: ${theme.colors.background_white};
@@ -28,11 +27,10 @@ const MainStyled = styled.div`
   box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 1fr 3fr;
 
   .menu-and-admin {
     position: relative;
     display: grid;
-    overflow: hidden;
   }
 `;
