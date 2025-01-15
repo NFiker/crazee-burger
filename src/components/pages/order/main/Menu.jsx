@@ -31,8 +31,6 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  border: 3px solid blue;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;

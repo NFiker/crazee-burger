@@ -5,6 +5,5 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-  border: 3px solid purple;
   background: pink;
 `;

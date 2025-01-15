@@ -2,19 +2,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Profile from "./Profile";
 import { GrUserAdmin } from "react-icons/gr";
-import NavbarRightSideIncomplet from "./NavbarRightSideIncomplet";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { useState } from "react";
+import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import { theme } from "../../../../theme/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OrderContext from "../../../../context/OrderContext";
 
-export default function Navlogin({ username }) {
-  const [isAdmin, setIsAdmin] = useState(false);
+export default function Navlogin() {
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   const notify = () => {
-    if (!isAdmin) {
+    if (!isModeAdmin) {
       toast.info("Mode admin activé", {
         icon: <GrUserAdmin size={30} color={"#2B77AA"} />,
         theme: "dark",
@@ -27,7 +27,7 @@ export default function Navlogin({ username }) {
         progress: undefined,
       });
     }
-    setIsAdmin(!isAdmin);
+    setIsModeAdmin(!isModeAdmin);
   };
 
   return (
@@ -38,7 +38,7 @@ export default function Navlogin({ username }) {
         onToggle={notify}
       />
       <ToastAdmin />
-      <Profile username={username} />
+      <Profile />
     </NavLoginStyled>
   );
 }

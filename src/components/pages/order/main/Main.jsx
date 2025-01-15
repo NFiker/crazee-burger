@@ -7,7 +7,7 @@ import Admin from "./Admin";
 export default function Main() {
   return (
     <MainStyled>
-      <Basket />
+      {/* <Basket /> */}
       <div className="menu-and-admin">
         <Menu />
         <Admin />
@@ -27,7 +27,7 @@ const MainStyled = styled.div`
   box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  /* grid-template-columns: 1fr 3fr; */
 
   .menu-and-admin {
     position: relative;
