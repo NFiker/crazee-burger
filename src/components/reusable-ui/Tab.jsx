@@ -43,6 +43,9 @@ const TabStyled = styled.button`
   &:hover {
     //border
     border-bottom: 2px solid ${theme.colors.white};
+    scale: 1.05;
+    transition: all 0.2s ease-in-out;
+    text-decoration: underline;
   }
 
   .icon {
