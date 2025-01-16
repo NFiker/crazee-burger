@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function Tab({ Icon, onClick, className }) {
+export default function Tab({ label, Icon, onClick, className }) {
   return (
     <TabStyled onClick={onClick} className={className}>
       <div className="icon">{Icon}</div>
+      {label && <span className="label">{label}</span>}
     </TabStyled>
   );
 }
@@ -48,5 +49,9 @@ const TabStyled = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .label {
+    margin-left: 13px;
   }
 `;
