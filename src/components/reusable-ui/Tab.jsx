@@ -46,6 +46,7 @@ const TabStyled = styled.button`
     scale: 1.05;
     transition: all 0.2s ease-in-out;
     text-decoration: underline;
+    z-index: 10;
   }
 
   .icon {

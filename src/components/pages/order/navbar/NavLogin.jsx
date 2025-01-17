@@ -33,6 +33,7 @@ export default function Navlogin() {
   return (
     <NavLoginStyled>
       <ToggleButton
+        isChecked={isModeAdmin}
         labelIfChecked="Désactiver le mode admin"
         labelIfUnchecked="Activer le mode admin"
         onToggle={notify}
