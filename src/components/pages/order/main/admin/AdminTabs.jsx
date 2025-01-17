@@ -16,6 +16,8 @@ export default function AdminTabs() {
     setIsAddSelected,
     isEditSelected,
     setIsEditSelected,
+    currentTabSelected,
+    setCurrentTabSelected,
   } = useContext(OrderContext);
 
   const handleClick = () => {
@@ -37,45 +39,52 @@ export default function AdminTabs() {
 
   const selectTab = (tabSelected) => {
     setIsCollapsed(false);
-    setIsAddSelected(tabSelected === "add");
-    setIsEditSelected(tabSelected === "edit");
+    // setIsAddSelected(tabSelected === "add");
+    // setIsEditSelected(tabSelected === "edit");
+    setCurrentTabSelected(tabSelected);
   };
 
   const tabsConfig = [
-    {
-      label: "",
-      Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-      onClick: handleClick,
-      className: isCollapsed ? "is-active" : "",
-    },
+    // {
+    //   index: "chevronUpDown",
+    //   label: "",
+    //   Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
+    //   onClick: handleClick,
+    //   className: isCollapsed ? "is-active" : "",
+    // },
 
     {
+      index: "add",
       label: "Ajouter un produit",
       Icon: <AiOutlinePlus />,
-      onClick: () => selectTab("add"),
-      className: isAddSelected ? "is-active" : "",
+      className: currentTabSelected === "add" ? "is-active" : "",
     },
 
     {
+      index: "edit",
       label: "Modifier un produit",
       Icon: <MdModeEditOutline />,
-      onClick: () => selectTab("edit"),
-      className: isEditSelected ? "is-active" : "",
+      className: currentTabSelected === "edit" ? "is-active" : "",
     },
   ];
 
   return (
     <AdminTabsStyled>
-      {tabsConfig.map((tab) => {
-        return (
-          <Tab
-            label={tab.label}
-            Icon={tab.Icon}
-            onClick={tab.onClick}
-            className={tab.className}
-          />
-        );
-      })}
+      <Tab
+        label=""
+        Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={handleClick}
+        className={isCollapsed ? "is-active" : ""}
+      />
+      ;
+      {tabsConfig.map((tab) => (
+        <Tab
+          label={tab.label}
+          Icon={tab.Icon}
+          onClick={() => selectTab(tab.index)}
+          className={tab.className}
+        />
+      ))}
     </AdminTabsStyled>
   );
 }
