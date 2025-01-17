@@ -12,36 +12,13 @@ export default function AdminTabs() {
   const {
     isCollapsed,
     setIsCollapsed,
-    // isAddSelected,
-    // setIsAddSelected,
-    // isEditSelected,
-    // setIsEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
   } = useContext(OrderContext);
 
-  const handleClick = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  // const selectTab = (tabSelected) => {
-  //   setIsCollapsed(false);
-
-  //   if (tabSelected === "add") {
-  //     setIsAddSelected(true);
-  //     setIsEditSelected(false);
-  //   }
-  //   if (tabSelected === "edit") {
-  //     setIsEditSelected(true);
-  //     setIsAddSelected(false);
-  //   }
-  // };
-
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false);
-    // setIsAddSelected(tabSelected === "add");
-    // setIsEditSelected(tabSelected === "edit");
-    setCurrentTabSelected(tabSelected);
+    setIsCollapsed(false); // Ouvre le panel admin au click d'un tab
+    setCurrentTabSelected(tabSelected); // réactualise l'onglet sélectionné
   };
 
   const tabs = getTabsConfig(currentTabSelected);
@@ -51,16 +28,19 @@ export default function AdminTabs() {
       <Tab
         label=""
         Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-        onClick={handleClick}
+        onClick={() => {
+          setIsCollapsed(!isCollapsed);
+        }}
         className={isCollapsed ? "is-active" : ""}
       />
       ;
       {tabs.map((tab) => (
         <Tab
+          key={tab.index}
           label={tab.label}
           Icon={tab.Icon}
           onClick={() => selectTab(tab.index)}
-          className={tab.className}
+          className={currentTabSelected === tab.index ? "is-active" : ""}
         />
       ))}
     </AdminTabsStyled>
