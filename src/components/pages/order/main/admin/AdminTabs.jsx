@@ -22,50 +22,60 @@ export default function AdminTabs() {
     setIsCollapsed(!isCollapsed);
   };
 
-  const selectAddTab = () => {
-    setIsCollapsed(false);
-    setIsAddSelected(true);
-    setIsEditSelected(false);
-  };
+  // const selectTab = (tabSelected) => {
+  //   setIsCollapsed(false);
 
-  const selectEditTab = () => {
-    setIsCollapsed(false);
-    setIsAddSelected(false);
-    setIsEditSelected(true);
-  };
+  //   if (tabSelected === "add") {
+  //     setIsAddSelected(true);
+  //     setIsEditSelected(false);
+  //   }
+  //   if (tabSelected === "edit") {
+  //     setIsEditSelected(true);
+  //     setIsAddSelected(false);
+  //   }
+  // };
 
   const selectTab = (tabSelected) => {
     setIsCollapsed(false);
-
-    if (tabSelected === "add") {
-      setIsAddSelected(true);
-      setIsEditSelected(false);
-    }
-    if (tabSelected === "edit") {
-      setIsEditSelected(true);
-      setIsAddSelected(false);
-    }
+    setIsAddSelected(tabSelected === "add");
+    setIsEditSelected(tabSelected === "edit");
   };
+
+  const tabsConfig = [
+    {
+      label: "",
+      Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
+      onClick: handleClick,
+      className: isCollapsed ? "is-active" : "",
+    },
+
+    {
+      label: "Ajouter un produit",
+      Icon: <AiOutlinePlus />,
+      onClick: () => selectTab("add"),
+      className: isAddSelected ? "is-active" : "",
+    },
+
+    {
+      label: "Modifier un produit",
+      Icon: <MdModeEditOutline />,
+      onClick: () => selectTab("edit"),
+      className: isEditSelected ? "is-active" : "",
+    },
+  ];
 
   return (
     <AdminTabsStyled>
-      <Tab
-        Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-        onClick={handleClick}
-        className={isCollapsed ? "is-active" : ""}
-      />
-      <Tab
-        Icon={<AiOutlinePlus />}
-        onClick={() => selectTab("add")}
-        className={isAddSelected ? "is-active" : ""}
-        label={"Ajouter un produit"}
-      />
-      <Tab
-        Icon={<MdModeEditOutline />}
-        onClick={() => selectTab("edit")}
-        className={isEditSelected ? "is-active" : ""}
-        label={"Modifier un produit"}
-      />
+      {tabsConfig.map((tab) => {
+        return (
+          <Tab
+            label={tab.label}
+            Icon={tab.Icon}
+            onClick={tab.onClick}
+            className={tab.className}
+          />
+        );
+      })}
     </AdminTabsStyled>
   );
 }
