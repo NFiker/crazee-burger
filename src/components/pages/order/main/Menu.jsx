@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import { useState } from "react";
 import { theme } from "../../../../theme/index";
 import { formatPrice } from "../../../../utils/maths";
@@ -9,7 +9,7 @@ import "simplebar/dist/simplebar.min.css";
 import Card from "../../../reusable-ui/Card";
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu2);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
 
   return (
     <SimpleBar>
