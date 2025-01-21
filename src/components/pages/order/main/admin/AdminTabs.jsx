@@ -6,7 +6,7 @@ import { theme } from "../../../../../theme/index";
 import OrderPage from "../../OrderPage";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig } from "./getTabsConfig";
+import { getTabsConfig } from "./adminPanel/getTabsConfig";
 
 export default function AdminTabs() {
   const {

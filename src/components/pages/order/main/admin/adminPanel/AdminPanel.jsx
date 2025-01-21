@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme/index";
+import { theme } from "../../../../../../theme/index";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
+import OrderContext from "../../../../../../context/OrderContext";
 import { getTabsConfig, getTabsSelected } from "./getTabsConfig";
 
 export default function AdminPanel() {
@@ -14,7 +14,7 @@ export default function AdminPanel() {
     <AdminPanelStyled>
       {/* {isAddSelected && "Ajouter un produit"}
       {isEditSelected && "Modifier un produit"} */}
-      {currentTabSelected === tabSelected.index && tabSelected.label}
+      {currentTabSelected === tabSelected.index && tabSelected.content}
     </AdminPanelStyled>
   );
 }
