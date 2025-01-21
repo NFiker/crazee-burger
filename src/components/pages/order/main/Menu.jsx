@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
-import { useState } from "react";
 import { theme } from "../../../../theme/index";
 import { formatPrice } from "../../../../utils/maths";
+import { useContext } from "react";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 import Card from "../../../reusable-ui/Card";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const { menu } = useContext(OrderContext);
 
   return (
     <SimpleBar>

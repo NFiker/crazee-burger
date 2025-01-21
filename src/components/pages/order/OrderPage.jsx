@@ -4,6 +4,7 @@ import { theme } from "../../../theme/index";
 import { useState } from "react";
 import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
   //State
@@ -12,6 +13,17 @@ export default function OrderPage() {
   const [isAddSelected, setIsAddSelected] = useState(true);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+
+  const handleAdd = (newProduct) => {
+    // 1. Copie du tableau
+    const menuCopy = [...menu];
+
+    // 2. Manip de la copie du tableau
+    const menuUpdated = [newProduct, ...menuCopy];
+    // 3. Update du state
+    setMenu(menuUpdated);
+  };
 
   //Comportements
 
@@ -26,6 +38,8 @@ export default function OrderPage() {
     setIsEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
+    menu,
+    handleAdd,
   };
 
   //Affichage
