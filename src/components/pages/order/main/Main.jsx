@@ -28,8 +28,6 @@ const MainStyled = styled.div`
   /* flex: 1; */
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2) inset;
-
   display: grid;
   /* grid-template-columns: 1fr 3fr; */
 

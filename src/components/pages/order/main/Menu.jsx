@@ -36,5 +36,5 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
-  box-shadow: 0 0 20px 8 rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
 `;
