@@ -2,26 +2,37 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Basket from "./Basket";
 import Menu from "./Menu";
+import Admin from "./admin/Admin";
+import OrderContext from "../../../../context/OrderContext";
+import { useContext } from "react";
 
 export default function Main() {
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+
   return (
     <MainStyled>
       {/* <Basket /> */}
-      <Menu />
+      <div className="menu-and-admin">
+        <Menu />
+        {isModeAdmin && <Admin />}
+      </div>
     </MainStyled>
   );
 }
 
 const MainStyled = styled.div`
+  overflow: hidden;
+  display: grid;
   background: ${theme.colors.background_white};
-  flex: 1;
-
+  height: calc(95vh - 10vh);
+  /* flex: 1; */
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2) inset;
-
   display: grid;
-  //code for <basket />
   /* grid-template-columns: 1fr 3fr; */
-  grid-template-columns: 1fr;
+
+  .menu-and-admin {
+    position: relative;
+    display: grid;
+  }
 `;

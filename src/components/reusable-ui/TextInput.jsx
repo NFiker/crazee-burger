@@ -19,14 +19,14 @@ const InputStyled = styled.div`
   margin: 18px 0;
 
   .icon {
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     margin-right: ${theme.spacing.xs};
     color: ${theme.colors.greySemiDark};
   }
 
   input {
     border: none;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     color: #${theme.colors.dark};
     width: 100%;
     /* display: flex; */

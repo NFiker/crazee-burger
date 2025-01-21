@@ -51,9 +51,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* .simplebar-mask {
+  .simplebar-mask {
     height: 100%;
-  } */
+  }
 
   .simplebar-placeholder {
     height: auto !important;
