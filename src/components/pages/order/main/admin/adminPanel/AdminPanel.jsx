@@ -11,16 +11,13 @@ export default function AdminPanel() {
   const tabSelected = getTabsSelected(tabs, currentTabSelected);
 
   return (
-    <AdminPanelStyled>
-      {/* {isAddSelected && "Ajouter un produit"}
-      {isEditSelected && "Modifier un produit"} */}
-      {currentTabSelected === tabSelected.index && tabSelected.content}
-    </AdminPanelStyled>
+    <AdminPanelStyled>{tabSelected && tabSelected.Content}</AdminPanelStyled>
   );
 }
 
 const AdminPanelStyled = styled.div`
   height: 251px;
+  padding: 20px 5%;
   background: ${theme.colors.white};
   border: 1px solid ${theme.colors.greyLight};
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
