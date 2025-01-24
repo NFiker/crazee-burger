@@ -5,9 +5,9 @@ import { useState } from "react";
 
 const EMPTY_PRODUCT = {
   id: "",
-  title: "Nouveau produit",
+  title: "",
   imageSource: "",
-  price: 1,
+  price: 0,
 };
 
 export default function AddForm() {
