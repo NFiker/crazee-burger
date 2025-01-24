@@ -11,6 +11,7 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddForm() {
+  //State
   const { handleAdd } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -23,9 +24,14 @@ export default function AddForm() {
   //   price: 2.5,
   // };
 
+  //Comportements
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleAdd(newProduct);
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    };
+    handleAdd(newProductToAdd);
   };
 
   const handleChange = (event) => {
@@ -33,6 +39,7 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">image-preview</div>
