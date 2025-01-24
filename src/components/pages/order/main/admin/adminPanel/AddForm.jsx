@@ -2,6 +2,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext } from "react";
 import { useState } from "react";
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -15,6 +16,7 @@ export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   //Comportements
   const handleSubmit = (event) => {
@@ -25,11 +27,19 @@ export default function AddForm() {
     };
     handleAdd(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+    displaySuccessMessage();
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNewProduct({ ...newProduct, [name]: value }); //[] Dynamic Property Name
+  };
+
+  const displaySuccessMessage = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
   };
 
   //Affichage
@@ -65,7 +75,14 @@ export default function AddForm() {
           onChange={handleChange}
         />
       </div>
-      <button className="submit-button">submit-button</button>
+      <div className="submit">
+        <button className="submit-button">submit-button</button>
+        {isSubmitted && (
+          <span className="submit-message">
+            <FiCheck /> Ajouté avec succès !
+          </span>
+        )}
+      </div>
     </AddFormStyled>
   );
 }
@@ -103,9 +120,14 @@ const AddFormStyled = styled.form`
     display: grid;
   }
 
-  .submit-button {
+  .submit {
     background: blue;
     grid-area: submit-button;
-    width: 50%;
+    display: flex;
+    align-items: center;
+
+    .submit-button {
+      width: 50%;
+    }
   }
 `;
