@@ -11,7 +11,7 @@ import OrderContext from "../../../../context/OrderContext";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu } = useContext(OrderContext);
+  const { menu, isModeAdmin } = useContext(OrderContext);
 
   return (
     <SimpleBar>
@@ -23,6 +23,7 @@ export default function Menu() {
               title={title}
               imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
               leftDescription={formatPrice(price)}
+              hasDeleteButton={isModeAdmin}
             />
             // <Card {...card} /> non utilisable pour des reusable componenents
           );
