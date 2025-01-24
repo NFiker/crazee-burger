@@ -16,14 +16,6 @@ export default function AddForm() {
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-  // const newProduct = {
-  //   id: new Date().getTime(),
-  //   title: "Nouveau Produit",
-  //   imageSource:
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFHRRH1CDl_ixjeRdebtFu9pth5PvDEaGwtg&s",
-  //   price: 2.5,
-  // };
-
   //Comportements
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,13 +28,19 @@ export default function AddForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setNewProduct({ ...newProduct, [name]: value });
+    setNewProduct({ ...newProduct, [name]: value }); //[] Dynamic Property Name
   };
 
   //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">image-preview</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
+        ) : (
+          <div>Aucune Image</div>
+        )}
+      </div>
       <div className="input-fields">
         <input
           name="title"
@@ -88,6 +86,15 @@ const AddFormStyled = styled.form`
   .image-preview {
     background: red;
     grid-area: image-preview;
+    /* justify-content: center;
+    align-items: center; */
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
   }
 
   .input-fields {
