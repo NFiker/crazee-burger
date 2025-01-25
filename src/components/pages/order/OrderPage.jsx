@@ -9,11 +9,9 @@ import { fakeMenu } from "../../../fakeData/fakeMenu";
 export default function OrderPage() {
   //State
   const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isAddSelected, setIsAddSelected] = useState(true);
-  const [isEditSelected, setIsEditSelected] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
 
   //Comportements
   const handleAdd = (newProduct) => {
@@ -36,20 +34,21 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const resetMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setIsAddSelected,
-    isEditSelected,
-    setIsEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
     menu,
     handleAdd,
     handleDelete,
+    resetMenu,
   };
 
   //Affichage

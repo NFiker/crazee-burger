@@ -11,7 +11,16 @@ import OrderContext from "../../../../context/OrderContext";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(OrderContext);
+
+  if (menu.length === 0)
+    return (
+      <div>
+        <span>Pas de produit</span>
+        <button onClick={resetMenu}>Générer de nouveaux produits</button>
+      </div>
+    );
 
   return (
     <SimpleBar>
@@ -35,6 +44,7 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
+  height: 100vh; //temporaire avant correction z-index
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;
