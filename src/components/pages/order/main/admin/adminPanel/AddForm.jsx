@@ -3,6 +3,7 @@ import OrderContext from "../../../../../../context/OrderContext";
 import { useContext } from "react";
 import { useState } from "react";
 import { FiCheck } from "react-icons/fi";
+import { theme } from "../../../../../../theme/index";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -49,7 +50,7 @@ export default function AddForm() {
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
-          <div>Aucune Image</div>
+          <div className="empty-image">Aucune Image</div>
         )}
       </div>
       <div className="input-fields">
@@ -88,7 +89,7 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
@@ -100,9 +101,11 @@ const AddFormStyled = styled.form`
 
   height: 100%;
   width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
-    background: red;
+    /* background: red; */
     grid-area: image-preview;
 
     img {
@@ -110,6 +113,18 @@ const AddFormStyled = styled.form`
       width: 100%;
       object-fit: contain;
       object-position: center;
+    }
+
+    .empty-image {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid ${theme.colors.greyLight};
+      line-height: 1.5;
+      color: ${theme.colors.greySemiDark};
+      border-radius: ${theme.borderRadius.round};
     }
   }
 
