@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme/index";
-import { formatPrice } from "../../../../utils/maths";
+import { theme } from "../../../../../theme/index";
+import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
-import Card from "../../../reusable-ui/Card";
-import OrderContext from "../../../../context/OrderContext";
+import Card from "../../../../reusable-ui/Card";
+import OrderContext from "../../../../../context/OrderContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
@@ -14,13 +16,13 @@ export default function Menu() {
   const { menu, isModeAdmin, handleDelete, resetMenu } =
     useContext(OrderContext);
 
-  if (menu.length === 0)
-    return (
-      <div>
-        <span>Pas de produit</span>
-        <button onClick={resetMenu}>Générer de nouveaux produits</button>
-      </div>
+  if (menu.length === 0) {
+    return isModeAdmin ? (
+      <EmptyMenuAdmin resetMenu={resetMenu} />
+    ) : (
+      <EmptyMenuClient />
     );
+  }
 
   return (
     <SimpleBar>
