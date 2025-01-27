@@ -7,11 +7,18 @@ import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
+  const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: "",
+  };
   //State
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //Comportements
   const handleAdd = (newProduct) => {
@@ -49,6 +56,8 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   //Affichage
