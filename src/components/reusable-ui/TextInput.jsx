@@ -40,10 +40,10 @@ const TextInputStyled = styled.div`
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.dark};
     width: 100%;
+    background: ${theme.colors.background_white};
 
     &::placeholder {
       color: ${theme.colors.greyMedium};
-      background: ${theme.colors.background_white};
     }
   }
 
@@ -53,7 +53,7 @@ const TextInputStyled = styled.div`
     if (props.$version === "minimalist") return extraStyleMinimalist;
   }}; */
 
-  ${({ version }) => extraStyle[version]}
+  ${({ version }) => extraStyle[version]}//Dynamic Name Property
 `;
 
 const extraStyleNormal = css`
