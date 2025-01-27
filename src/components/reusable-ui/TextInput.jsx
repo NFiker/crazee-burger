@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 import { theme } from "../../theme";
 
 export default function TextInput({
@@ -6,18 +7,18 @@ export default function TextInput({
   onChange,
   Icon,
   className,
+  version = "normal",
   ...extraProps
 }) {
   return (
-    <InputStyled className={className}>
+    <TextInputStyled className={className} $version={version}>
       <div className="icon">{Icon && Icon}</div>
       <input value={value} onChange={onChange} type="text" {...extraProps} />
-    </InputStyled>
+    </TextInputStyled>
   );
 }
 
-const InputStyled = styled.div`
-  background-color: ${theme.colors.white};
+const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
@@ -38,11 +39,44 @@ const InputStyled = styled.div`
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.dark};
     width: 100%;
-    /* display: flex; */
 
     &::placeholder {
-      background: ${theme.colors.white};
+      /* background: ${theme.colors.white}; */
       color: ${theme.colors.greySemiDark};
+    }
+  }
+
+  ${(props) => {
+    if (props.$version === "normal") return extraStyleNormal;
+
+    if (props.$version === "minimalist") return extraStyleMinimalist;
+  }};
+`;
+
+const extraStyleNormal = css`
+  background: ${theme.colors.white};
+  padding: 18 28px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &:placeholder {
+      background: ${theme.colors.white};
+    }
+  }
+`;
+const extraStyleMinimalist = css`
+  background: ${theme.colors.background_white};
+  padding: 8px 10px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0;
     }
   }
 `;
