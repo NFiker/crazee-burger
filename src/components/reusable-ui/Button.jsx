@@ -7,9 +7,10 @@ export default function Button({
   Icon,
   className,
   version = "primary",
+  onClick,
 }) {
   return (
-    <ButtonStyled className={className} version={version}>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -34,7 +35,7 @@ const extraStylePrimary = css`
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
   font-size: 13px;
-  font-weight: ${theme.fonts.weights.semiBold};
+  font-weight: ${theme.fonts.weight.semiBold};
   color: ${theme.colors.white};
   background-color: ${theme.colors.primary};
   border: 1px solid ${theme.colors.primary};
@@ -73,7 +74,7 @@ const extraStyleSuccess = css`
   border-radius: ${theme.borderRadius.round};
   height: 35px;
   padding: 0 1.5em;
-  font-weight: ${theme.fonts.weights.semiBold};
+  font-weight: ${theme.fonts.weight.semiBold};
 
   &:hover {
     background: ${theme.colors.white};
