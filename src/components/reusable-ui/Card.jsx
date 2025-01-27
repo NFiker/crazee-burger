@@ -99,7 +99,7 @@ const CardStyled = styled.div`
   .title {
     font-family: ${theme.fonts.style.brandFont};
     font-size: ${theme.fonts.size.P4};
-    font-weight: ${theme.fonts.weights.semiBold};
+    font-weight: ${theme.fonts.weight.semiBold};
     color: ${theme.colors.dark};
     text-align: center;
     white-space: nowrap;
@@ -122,7 +122,7 @@ const CardStyled = styled.div`
       width: 100%;
 
       .left-description {
-        font-weight: ${theme.fonts.weights.bold};
+        font-weight: ${theme.fonts.weight.bold};
         color: ${theme.colors.primary};
         white-space: nowrap;
         overflow: hidden;
