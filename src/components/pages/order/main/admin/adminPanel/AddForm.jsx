@@ -95,7 +95,7 @@ export default function AddForm() {
         />
         {isSubmitted && (
           <span className="submit-message">
-            <FiCheck /> Ajouté avec succès !
+            <FiCheck className="icon" /> Ajouté avec succès !
           </span>
         )}
       </div>
@@ -160,11 +160,25 @@ const AddFormStyled = styled.form`
 
     .submit-button {
       width: 50%;
+      margin-top: 8px;
     }
 
     .submit-message {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: ${theme.colors.success};
-      margin-left: 10px;
+      margin-left: 5px;
+      font-size: ${theme.fonts.size.P0};
+
+      .icon {
+        margin: 0 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: ${theme.borderRadius.extraRound};
+        vertical-align: middle;
+      }
     }
   }
 `;
