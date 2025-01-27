@@ -23,11 +23,12 @@ const TextInputStyled = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 24px;
+  background: ${theme.colors.background_white};
 
   .icon {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     font-size: ${theme.fonts.size.SM};
     margin-left: 10px;
     margin-right: ${theme.spacing.xs};
@@ -41,16 +42,18 @@ const TextInputStyled = styled.div`
     width: 100%;
 
     &::placeholder {
-      /* background: ${theme.colors.white}; */
-      color: ${theme.colors.greySemiDark};
+      color: ${theme.colors.greyMedium};
+      background: ${theme.colors.background_white};
     }
   }
 
-  ${(props) => {
+  /* ${(props) => {
     if (props.$version === "normal") return extraStyleNormal;
 
     if (props.$version === "minimalist") return extraStyleMinimalist;
-  }};
+  }}; */
+
+  ${({ version }) => extraStyle[version]}
 `;
 
 const extraStyleNormal = css`
@@ -68,7 +71,7 @@ const extraStyleNormal = css`
 `;
 const extraStyleMinimalist = css`
   background: ${theme.colors.background_white};
-  padding: 8px 10px;
+  padding: 8px 16px;
   color: ${theme.colors.greyBlue};
 
   input {
@@ -80,3 +83,8 @@ const extraStyleMinimalist = css`
     }
   }
 `;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+};

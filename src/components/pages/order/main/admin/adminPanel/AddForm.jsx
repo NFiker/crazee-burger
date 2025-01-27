@@ -13,7 +13,7 @@ const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
-  price: 0,
+  price: "",
 };
 
 export default function AddForm() {
@@ -143,7 +143,8 @@ const AddFormStyled = styled.form`
     grid-area: input-fields;
 
     display: grid;
-    grid-row-gap: 8px;
+    align-self: center;
+    grid-row-gap: 5px;
   }
 
   .submit {
