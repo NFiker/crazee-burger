@@ -5,14 +5,9 @@ import { useState } from "react";
 import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "./main/admin/adminPanel/AddForm";
 
 export default function OrderPage() {
-  const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: "",
-  };
   //State
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
