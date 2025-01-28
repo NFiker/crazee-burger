@@ -22,7 +22,7 @@ const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px 24px;
+  padding: 10px 20px;
   background: ${theme.colors.background_white};
 
   .icon {
@@ -64,7 +64,7 @@ const extraStyleNormal = css`
   input {
     color: ${theme.colors.dark};
 
-    &:placeholder {
+    &::placeholder {
       background: ${theme.colors.white};
     }
   }
