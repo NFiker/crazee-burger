@@ -4,6 +4,7 @@ import { GiEternalLove } from "react-icons/gi";
 import { BiSun } from "react-icons/bi";
 import AddForm from "./AddForm";
 import EditForm from "./EditForm";
+import HintMessage from "./HintMessage";
 
 export const getTabsConfig = (currentTabSelected) => [
   {
@@ -19,20 +20,21 @@ export const getTabsConfig = (currentTabSelected) => [
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
     Content: <EditForm />,
+
     // className: currentTabSelected === "edit" ? "is-active" : "",
   },
-  {
-    index: "theme",
-    label: "Changer thème",
-    Icon: <BiSun />,
-    // className: currentTabSelected === "edit" ? "is-active" : "",
-  },
-  {
-    index: "babe",
-    label: "Onglet de l'amouuur ",
-    Icon: <GiEternalLove />,
-    // className: currentTabSelected === "edit" ? "is-active" : "",
-  },
+  // {
+  //   index: "theme",
+  //   label: "Changer thème",
+  //   Icon: <BiSun />,
+  //   // className: currentTabSelected === "edit" ? "is-active" : "",
+  // },
+  // {
+  //   index: "babe",
+  //   label: "Onglet de l'amouuur ",
+  //   Icon: <GiEternalLove />,
+  //   // className: currentTabSelected === "edit" ? "is-active" : "",
+  // },
 ];
 
 export const getTabsSelected = (tabs, currentTabSelected) =>
