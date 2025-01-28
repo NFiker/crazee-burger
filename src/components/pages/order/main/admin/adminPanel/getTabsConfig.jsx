@@ -6,14 +6,6 @@ import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 
 export const getTabsConfig = (currentTabSelected) => [
-  // {
-  //   index: "chevronUpDown",
-  //   label: "",
-  //   Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-  //   onClick: handleClick,
-  //   className: isCollapsed ? "is-active" : "",
-  // },
-
   {
     index: "add",
     label: "Ajouter un produit",

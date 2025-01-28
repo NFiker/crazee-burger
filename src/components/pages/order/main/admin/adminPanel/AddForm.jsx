@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import { useContext } from "react";
-import { useState } from "react";
-import { FaHamburger } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
+import { useContext, useState } from "react";
 import { theme } from "../../../../../../theme/index";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./getInputTextsConfig";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -21,7 +18,6 @@ export const EMPTY_PRODUCT = {
 export default function AddForm() {
   //State
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   //Comportements
@@ -38,7 +34,7 @@ export default function AddForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setNewProduct({ ...newProduct, [name]: value }); //[] Dynamic Property Name
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
   const displaySuccessMessage = () => {
@@ -48,6 +44,8 @@ export default function AddForm() {
     }, 2000);
   };
 
+  const inputTexts = getInputTextsConfig(newProduct);
+
   //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
@@ -56,33 +54,18 @@ export default function AddForm() {
         imageSource={newProduct.imageSource}
       />
       <div className="input-fields">
-        <TextInput
-          name="title"
-          value={newProduct.title}
-          type="text"
-          placeholder="Nom du produit (ex: Super Burger)"
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          version="minimalist"
-        />
-        <TextInput
-          name="imageSource"
-          value={newProduct.imageSource}
-          type="text"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          version="minimalist"
-        />
-        <TextInput
-          name="price"
-          value={newProduct.price}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          version="minimalist"
-        />
+        {inputTexts.map((input) => (
+          <TextInput
+            key={input.id}
+            // name={input.name}
+            // value={input.value}
+            // placeholder={input.placeholder}
+            // Icon={input.Icon}
+            {...input}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
       </div>
       <div className="submit">
         <Button
@@ -97,7 +80,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  /* border: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
@@ -113,16 +95,13 @@ const AddFormStyled = styled.form`
   grid-row-gap: 8px;
 
   .input-fields {
-    /* background: green; */
     grid-area: input-fields;
-
     display: grid;
     align-self: center;
     grid-row-gap: 5px;
   }
 
   .submit {
-    /* background: blue; */
     grid-area: submit-button;
     display: flex;
     align-items: center;
