@@ -69,6 +69,7 @@ const extraStyleNormal = css`
     }
   }
 `;
+
 const extraStyleMinimalist = css`
   background: ${theme.colors.background_white};
   padding: 8px 16px;
@@ -77,10 +78,10 @@ const extraStyleMinimalist = css`
   input {
     background: ${theme.colors.background_white};
     color: ${theme.colors.dark};
+  }
 
-    &:focus {
-      outline: 0;
-    }
+  input:focus {
+    outline: none;
   }
 `;
 
