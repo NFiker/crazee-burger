@@ -1,24 +1,31 @@
-import HintMessage from "./HintMessage";
+// import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext } from "react";
 import { getInputTextsConfig } from "./getInputTextsConfig.jsx";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview.jsx";
-import { useState } from "react";
 import TextInput from "../../../../../reusable-ui/TextInput.jsx";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function EditForm() {
-  const { productSelected } = useContext(OrderContext);
-  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT);
+  // State
+  const { productSelected, setProductSelected, handleEdit } =
+    useContext(OrderContext);
 
   const inputTexts = getInputTextsConfig(productSelected);
 
+  // Comportements
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setProductBeingEdited({ ...productBeingEdited, [name]: value });
+
+    const productBeingUpdated = { ...productSelected, [name]: value };
+
+    setProductSelected(productBeingUpdated);
+    handleEdit(productBeingUpdated);
+    // setNewProduct(EMPTY_PRODUCT);
+    // displaySuccessMessage();
   };
 
+  // Affichage
   return (
     <EditFormStyled>
       <ImagePreview
@@ -39,7 +46,7 @@ export default function EditForm() {
           />
         ))}
       </div>
-      <HintMessage />
+      {/* <HintMessage /> */}
     </EditFormStyled>
   );
 }
