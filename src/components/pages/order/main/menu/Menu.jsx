@@ -13,7 +13,8 @@ import EmptyMenuClient from "./EmptyMenuClient";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  //State
+  const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } =
     useContext(OrderContext);
 
   if (menu.length === 0) {
@@ -23,6 +24,14 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
+
+  //comportements
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    setProductSelected(productSelected);
+  };
 
   return (
     <SimpleBar>
@@ -36,6 +45,7 @@ export default function Menu() {
               leftDescription={formatPrice(price)}
               hasDeleteButton={isModeAdmin}
               onDelete={() => handleDelete(id)}
+              onClick={() => handleClick(id)}
             />
             // <Card {...card} /> non utilisable pour des reusable componenents
           );

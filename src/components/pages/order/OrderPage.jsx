@@ -5,7 +5,7 @@ import { useState } from "react";
 import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./main/admin/adminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   //State
@@ -14,6 +14,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
   //Comportements
   const handleAdd = (newProduct) => {
@@ -53,6 +54,8 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
   };
 
   //Affichage
