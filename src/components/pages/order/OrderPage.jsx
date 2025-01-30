@@ -6,6 +6,7 @@ import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
   //State
@@ -28,7 +29,7 @@ export default function OrderPage() {
 
   const handleDelete = (productIdDelete) => {
     // 1. Copie du tableau
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     // 2. Manip de la copie du tableau
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== productIdDelete
@@ -39,7 +40,7 @@ export default function OrderPage() {
 
   const handleEdit = (productBeingEdited) => {
     // 1. Copie du tableau
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
 
     // 2. Manip de la copie du state
     const indexOfProductToEdit = menu.findIndex(
