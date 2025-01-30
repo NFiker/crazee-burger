@@ -17,6 +17,15 @@ export default function Menu() {
   const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } =
     useContext(OrderContext);
 
+  //comportements
+  const handleClick = (idProductClicked) => {
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    setProductSelected(productClickedOn);
+  };
+
+  //Affichage
   if (menu.length === 0) {
     return isModeAdmin ? (
       <EmptyMenuAdmin onReset={resetMenu} />
@@ -24,14 +33,6 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
-
-  //comportements
-  const handleClick = (idProductClicked) => {
-    const productSelected = menu.find(
-      (product) => product.id === idProductClicked
-    );
-    setProductSelected(productSelected);
-  };
 
   return (
     <SimpleBar>
