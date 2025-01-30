@@ -46,6 +46,7 @@ export default function Card({
 
 const CardStyled = styled.div`
   ${(props) => props.$isHoverable && hoverableStyle}
+  height: 300px;
 
   .card {
     background: ${theme.colors.white};
