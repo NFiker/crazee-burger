@@ -48,6 +48,7 @@ export default function Menu() {
               onDelete={() => handleDelete(id)}
               onClick={() => handleClick(id)}
               isHoverable={isModeAdmin}
+              isSelected={true}
             />
             // <Card {...card} /> non utilisable pour des reusable componenents
           );
