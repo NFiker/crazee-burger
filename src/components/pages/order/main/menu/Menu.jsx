@@ -10,6 +10,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
@@ -51,7 +52,18 @@ export default function Menu() {
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
+
+    // Vérifie si le produit supprimé est celui actuellement sélectionné
+    const isDeletedProductSelected = productSelected?.id === idProductToDelete;
+
     handleDelete(idProductToDelete);
+
+    // Si le produit supprimé n'était pas celui sélectionné, on garde le focus
+    if (!isDeletedProductSelected) {
+      titleEditRef.current.focus();
+    } else {
+      setProductSelected(EMPTY_PRODUCT); // Réinitialise le produit sélectionné
+    }
   };
 
   return (

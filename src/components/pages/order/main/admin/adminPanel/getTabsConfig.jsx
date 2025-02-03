@@ -6,7 +6,7 @@ import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 import HintMessage from "./HintMessage";
 
-export const getTabsConfig = (currentTabSelected) => [
+export const getTabsConfig = (hasBeenClicked) => [
   {
     index: "add",
     label: "Ajouter un produit",
@@ -19,7 +19,7 @@ export const getTabsConfig = (currentTabSelected) => [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    Content: <EditForm />,
+    Content: hasBeenClicked ? <EditForm /> : <HintMessage />,
 
     // className: currentTabSelected === "edit" ? "is-active" : "",
   },
