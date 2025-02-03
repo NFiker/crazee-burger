@@ -8,9 +8,8 @@ import TextInput from "../../../../../reusable-ui/TextInput.jsx";
 
 export default function EditForm() {
   // State
-  const { productSelected, setProductSelected, handleEdit } =
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
     useContext(OrderContext);
-
   const inputTexts = getInputTextsConfig(productSelected);
 
   // Comportements
@@ -43,6 +42,7 @@ export default function EditForm() {
             {...input}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>
