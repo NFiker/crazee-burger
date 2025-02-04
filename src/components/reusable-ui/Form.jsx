@@ -11,7 +11,7 @@ import { EMPTY_PRODUCT } from "../../enums/product";
 import React from "react";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, QUELQUECHOSE }, ref) => {
+  ({ product, onSubmit, onChange, children }, ref) => {
     //State
 
     //Comportements
@@ -37,7 +37,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit">{QUELQUECHOSE}</div>
+        <div className="form-footer">{children}</div>
       </FormStyled>
     );
   }
@@ -67,14 +67,9 @@ const FormStyled = styled.form`
     grid-row-gap: 5px;
   }
 
-  .submit {
+  .form-footer {
     grid-area: submit-button;
     display: flex;
     align-items: center;
-
-    .submit-button {
-      width: 50%;
-      margin-top: 8px;
-    }
   }
 `;
