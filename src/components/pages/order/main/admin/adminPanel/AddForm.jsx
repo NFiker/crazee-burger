@@ -4,6 +4,7 @@ import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import Form from "../../../../../reusable-ui/Form.jsx";
 import Button from "../../../../../reusable-ui/Button.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
+import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
   //State
@@ -42,14 +43,15 @@ export default function AddForm() {
       onChange={handleChange}
       isSubmitted={isSubmitted}
     >
-      <>
+      <SubmitButton isSubmitted={isSubmitted} />
+      {/* <>
         <Button
           className="submit-button"
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
         {isSubmitted && <SubmitMessage />}
-      </>
+      </> */}
     </Form>
   );
 }
