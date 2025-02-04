@@ -58,11 +58,11 @@ export default function Menu() {
 
     handleDelete(idProductToDelete);
 
-    // Si le produit supprimé n'était pas celui sélectionné, on garde le focus
-    if (!isDeletedProductSelected) {
-      titleEditRef.current.focus();
+    if (isDeletedProductSelected) {
+      setProductSelected(EMPTY_PRODUCT);
     } else {
-      setProductSelected(EMPTY_PRODUCT); // Réinitialise le produit sélectionné
+      // S'assurer que le ref soit bien attaché sur le nouvel input avant de le focus
+      titleEditRef.current?.focus();
     }
   };
 
