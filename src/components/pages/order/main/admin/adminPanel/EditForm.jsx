@@ -7,6 +7,7 @@ import ImagePreview from "./ImagePreview.jsx";
 import TextInput from "../../../../../reusable-ui/TextInput.jsx";
 import { theme } from "../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
+import Form from "../../../../../reusable-ui/Form";
 
 export default function EditForm() {
   // State
@@ -28,31 +29,37 @@ export default function EditForm() {
 
   // Affichage
   return (
-    <EditFormStyled>
-      <ImagePreview
-        title={productSelected.title}
-        imageSource={productSelected.imageSource}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            // name={input.name}
-            // value={input.value}
-            // placeholder={input.placeholder}
-            // Icon={input.Icon}
-            {...input}
-            onChange={handleChange}
-            version="minimalist"
-            ref={input.name === "title" ? titleEditRef : null}
-          />
-        ))}
-      </div>
-      {/* <HintMessage /> */}
-      <div className="submit">
-        <EditInfoMessage />
-      </div>
-    </EditFormStyled>
+    // <EditFormStyled>
+    //   <ImagePreview
+    //     title={productSelected.title}
+    //     imageSource={productSelected.imageSource}
+    //   />
+    //   <div className="input-fields">
+    //     {inputTexts.map((input) => (
+    //       <TextInput
+    //         key={input.id}
+    //         // name={input.name}
+    //         // value={input.value}
+    //         // placeholder={input.placeholder}
+    //         // Icon={input.Icon}
+    //         {...input}
+    //         onChange={handleChange}
+    //         version="minimalist"
+    //         ref={input.name === "title" ? titleEditRef : null}
+    //       />
+    //     ))}
+    //   </div>
+    //   {/* <HintMessage /> */}
+    //   <div className="submit">
+    //     <EditInfoMessage />
+    //   </div>
+    // </EditFormStyled>
+    <Form
+      product={productSelected}
+      onChange={handleChange}
+      ref={titleEditRef}
+      QUELQUECHOSE={<EditInfoMessage />}
+    />
   );
 }
 

@@ -8,43 +8,42 @@ import ImagePreview from "../pages/order/main/admin/adminPanel/ImagePreview.jsx"
 import SubmitMessage from "../pages/order/main/admin/adminPanel/SubmitMessage.jsx";
 import { getInputTextsConfig } from "../pages/order/main/admin/adminPanel/getInputTextsConfig.jsx";
 import { EMPTY_PRODUCT } from "../../enums/product";
+import React from "react";
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) {
-  //State
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, QUELQUECHOSE }, ref) => {
+    //State
 
-  //Comportements
+    //Comportements
 
-  const inputTexts = getInputTextsConfig(product);
+    const inputTexts = getInputTextsConfig(product);
 
-  //Affichage
-  return (
-    <FormStyled onSubmit={onSubmit}>
-      <ImagePreview title={product.title} imageSource={product.imageSource} />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            // name={input.name}
-            // value={input.value}
-            // placeholder={input.placeholder}
-            // Icon={input.Icon}
-            {...input}
-            onChange={onChange}
-            version="minimalist"
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label="Ajouter un produit au menu"
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </div>
-    </FormStyled>
-  );
-}
+    //Affichage
+    return (
+      <FormStyled onSubmit={onSubmit}>
+        <ImagePreview title={product.title} imageSource={product.imageSource} />
+        <div className="input-fields">
+          {inputTexts.map((input) => (
+            <TextInput
+              key={input.id}
+              // name={input.name}
+              // value={input.value}
+              // placeholder={input.placeholder}
+              // Icon={input.Icon}
+              {...input}
+              onChange={onChange}
+              version="minimalist"
+              ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+        </div>
+        <div className="submit">{QUELQUECHOSE}</div>
+      </FormStyled>
+    );
+  }
+);
+
+export default Form;
 
 const FormStyled = styled.form`
   display: grid;
