@@ -1,8 +1,8 @@
-import Admin from "../admin/Admin.jsx";
-import OrderContext from "../../../../../context/OrderContext";
+import Admin from "./admin/Admin.jsx";
+import OrderContext from "../../../../../../context/OrderContext.js";
 import { useContext } from "react";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme/index.js";
 import Menu from "./Menu.jsx";
 
 export default function MainRightSide() {
