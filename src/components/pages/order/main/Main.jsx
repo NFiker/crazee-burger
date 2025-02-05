@@ -11,7 +11,7 @@ export default function Main() {
 
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket />
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -25,11 +25,12 @@ const MainStyled = styled.div`
   display: grid;
   background: ${theme.colors.background_white};
   height: calc(95vh - 10vh);
-  /* flex: 1; */
+  flex: 1;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
+  box-shadow: ${theme.shadows.medium};
   display: grid;
-  /* grid-template-columns: 1fr 3fr; */
+  grid-template-columns: 1fr 3fr;
 
   .menu-and-admin {
     position: relative;
