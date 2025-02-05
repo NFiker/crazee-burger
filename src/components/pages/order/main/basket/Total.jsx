@@ -1,0 +1,24 @@
+import React from "react";
+import { theme } from "../../../../../theme";
+import styled from "styled-components";
+
+export default function Total({ amountToPay }) {
+  return (
+    <TotalStyled>
+      <span className="total">Total</span>
+      <span className="amount">{amountToPay}</span>
+    </TotalStyled>
+  );
+}
+
+const TotalStyled = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: ${theme.colors.primary};
+  font-family: ${theme.fonts.style.brandFont};
+  font-size: ${theme.fonts.size.P4};
+  font-weight: ${theme.fonts.weight.bold};
+  letter-spacing: 2px;
+`;
