@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import { formatPrice } from "../../../../../utils/maths";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketCard({
   title,
@@ -17,7 +18,7 @@ export default function BasketCard({
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
-        <img src={imageSource} alt={title} />
+        <img src={imageSource ? imageSource : IMAGE_COMING_SOON} alt={title} />
       </div>
       <div className="text-info">
         <div className="left-info">

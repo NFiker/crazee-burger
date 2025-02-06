@@ -6,7 +6,7 @@ export default function BasketProducts({ basket }) {
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
-        <div className="basket-card">
+        <div key={basketProduct.id} className="basket-card">
           <BasketCard {...basketProduct} />
         </div>
       ))}

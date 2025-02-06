@@ -10,9 +10,10 @@ import OrderContext from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-
-const DEFAULT_IMAGE = "/images/coming-soon.png";
+import {
+  EMPTY_PRODUCT,
+  IMAGE_COMING_SOON,
+} from "../../../../../../enums/product";
 
 export default function Menu() {
   //State
@@ -74,7 +75,7 @@ export default function Menu() {
             <Card
               key={id}
               title={title}
-              imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+              imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
               leftDescription={formatPrice(price)}
               hasDeleteButton={isModeAdmin}
               onDelete={(event) => handleCardDelete(event, id)}
