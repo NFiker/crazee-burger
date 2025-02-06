@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
-import { theme } from "../../../../../theme/index";
-import AdminTabs from "./AdminTabs";
+import { theme } from "../../../../../../../theme/index";
+import AdminTabs from "../admin/AdminTabs";
 import AdminPanel from "./adminPanel/AdminPanel";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../context/OrderContext";
 
 export default function Admin() {
   const { isCollapsed } = useContext(OrderContext);
@@ -21,4 +21,5 @@ const AdminStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 3; // for hide Scrollbar
 `;

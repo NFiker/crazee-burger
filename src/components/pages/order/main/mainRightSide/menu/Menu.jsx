@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme/index";
-import { formatPrice } from "../../../../../utils/maths";
+import { theme } from "../../../../../../theme/index";
+import { formatPrice } from "../../../../../../utils/maths";
 import { useContext } from "react";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
-import Card from "../../../../reusable-ui/Card";
-import OrderContext from "../../../../../context/OrderContext";
+import Card from "../../../../../reusable-ui/Card";
+import OrderContext from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
@@ -91,9 +91,10 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  height: 100vh; //temporaire avant correction z-index
+  height: 100%; //temporaire avant correction z-index
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;

@@ -1,13 +1,13 @@
 // import HintMessage from "./HintMessage";
-import OrderContext from "../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 import { useContext } from "react";
 import { getInputTextsConfig } from "./getInputTextsConfig.jsx";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview.jsx";
-import TextInput from "../../../../../reusable-ui/TextInput.jsx";
-import { theme } from "../../../../../../theme";
+import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
+import { theme } from "../../../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
-import Form from "../../../../../reusable-ui/Form";
+import Form from "../../../../../../../reusable-ui/Form.jsx";
 
 export default function EditForm() {
   // State

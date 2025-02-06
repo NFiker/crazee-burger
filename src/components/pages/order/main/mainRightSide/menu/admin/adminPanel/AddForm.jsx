@@ -1,15 +1,16 @@
-import OrderContext from "../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-import Form from "../../../../../reusable-ui/Form.jsx";
-import Button from "../../../../../reusable-ui/Button.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../../../enums/product";
+import Form from "../../../../../../../reusable-ui/Form.jsx";
+import Button from "../../../../../../../reusable-ui/Button.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
-import SubmitButton from "./SubmitButton";
+import SubmitButton from "./SubmitButton.jsx";
+import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
   //State
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
 
   //Comportements
   const handleSubmit = (event) => {
@@ -26,13 +27,6 @@ export default function AddForm() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNewProduct({ ...newProduct, [name]: value });
-  };
-
-  const displaySuccessMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
   };
 
   //Affichage

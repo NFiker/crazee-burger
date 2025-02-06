@@ -4,9 +4,9 @@ import { useContext, useState } from "react";
 import { theme } from "../../theme";
 import TextInput from "./TextInput.jsx";
 import Button from "./Button.jsx";
-import ImagePreview from "../pages/order/main/admin/adminPanel/ImagePreview.jsx";
-import SubmitMessage from "../pages/order/main/admin/adminPanel/SubmitMessage.jsx";
-import { getInputTextsConfig } from "../pages/order/main/admin/adminPanel/getInputTextsConfig.jsx";
+import ImagePreview from "../pages/order/main/mainRightSide/menu/admin/adminPanel/ImagePreview.jsx";
+import SubmitMessage from "../pages/order/main/mainRightSide/menu/admin/adminPanel/SubmitMessage.jsx";
+import { getInputTextsConfig } from "../pages/order/main/mainRightSide/menu/admin/adminPanel/getInputTextsConfig.jsx";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import React from "react";
 
