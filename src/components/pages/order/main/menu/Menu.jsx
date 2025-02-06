@@ -9,13 +9,39 @@ import Card from "../../../../reusable-ui/Card";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
-    useContext(OrderContext);
+  //State
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
 
+  //comportements
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return;
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
+
+  //Affichage
   if (menu.length === 0) {
     return isModeAdmin ? (
       <EmptyMenuAdmin onReset={resetMenu} />
@@ -23,6 +49,22 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
+
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+
+    // Vérifie si le produit supprimé est celui actuellement sélectionné
+    const isDeletedProductSelected = productSelected?.id === idProductToDelete;
+
+    handleDelete(idProductToDelete);
+
+    if (isDeletedProductSelected) {
+      setProductSelected(EMPTY_PRODUCT);
+    } else {
+      // S'assurer que le ref soit bien attaché sur le nouvel input avant de le focus
+      titleEditRef.current?.focus();
+    }
+  };
 
   return (
     <SimpleBar>
@@ -35,7 +77,10 @@ export default function Menu() {
               imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
               leftDescription={formatPrice(price)}
               hasDeleteButton={isModeAdmin}
-              onDelete={() => handleDelete(id)}
+              onDelete={(event) => handleCardDelete(event, id)}
+              onClick={() => handleClick(id)}
+              isHoverable={isModeAdmin}
+              isSelected={checkIfProductClicked(id, productSelected.id)}
             />
             // <Card {...card} /> non utilisable pour des reusable componenents
           );

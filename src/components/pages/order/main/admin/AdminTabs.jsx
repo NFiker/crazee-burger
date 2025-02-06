@@ -6,7 +6,7 @@ import { theme } from "../../../../../theme/index";
 import OrderPage from "../../OrderPage";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig } from "./adminPanel/getTabsConfig";
+import { getTabsConfig } from "./adminPanel/getTabsConfig.jsx";
 
 export default function AdminTabs() {
   const {
@@ -21,7 +21,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); // réactualise l'onglet sélectionné
   };
 
-  const tabs = getTabsConfig(currentTabSelected);
+  const tabs = getTabsConfig();
 
   return (
     <AdminTabsStyled>

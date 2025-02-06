@@ -1,19 +1,10 @@
-import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { theme } from "../../../../../../theme/index";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import Button from "../../../../../reusable-ui/Button";
-import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
-import { getInputTextsConfig } from "./getInputTextsConfig";
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: "",
-};
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import Form from "../../../../../reusable-ui/Form.jsx";
+import Button from "../../../../../reusable-ui/Button.jsx";
+import SubmitMessage from "./SubmitMessage.jsx";
+import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
   //State
@@ -44,71 +35,23 @@ export default function AddForm() {
     }, 2000);
   };
 
-  const inputTexts = getInputTextsConfig(newProduct);
-
   //Affichage
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
-      <ImagePreview
-        title={newProduct.title}
-        imageSource={newProduct.imageSource}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            // name={input.name}
-            // value={input.value}
-            // placeholder={input.placeholder}
-            // Icon={input.Icon}
-            {...input}
-            onChange={handleChange}
-            version="minimalist"
-          />
-        ))}
-      </div>
-      <div className="submit">
+    <Form
+      product={newProduct}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      isSubmitted={isSubmitted}
+    >
+      <SubmitButton isSubmitted={isSubmitted} />
+      {/* <>
         <Button
           className="submit-button"
-          label="Ajouter un produit au menu"
+          label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
         {isSubmitted && <SubmitMessage />}
-      </div>
-    </AddFormStyled>
+      </> */}
+    </Form>
   );
 }
-
-const AddFormStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas:
-    "image-preview   input-fields"
-    "image-preview   input-fields"
-    "image-preview   input-fields"
-    ".               submit-button";
-
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-  .input-fields {
-    grid-area: input-fields;
-    display: grid;
-    align-self: center;
-    grid-row-gap: 5px;
-  }
-
-  .submit {
-    grid-area: submit-button;
-    display: flex;
-    align-items: center;
-
-    .submit-button {
-      width: 50%;
-      margin-top: 8px;
-    }
-  }
-`;
