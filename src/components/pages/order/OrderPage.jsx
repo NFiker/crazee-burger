@@ -6,6 +6,7 @@ import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
+import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
   //State
@@ -16,6 +17,7 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
+  const { basket } = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -34,6 +36,7 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     titleEditRef,
+    basket,
   };
 
   //Affichage
