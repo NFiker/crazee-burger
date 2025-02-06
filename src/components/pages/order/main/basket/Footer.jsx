@@ -8,7 +8,6 @@ export default function Footer() {
       <FooterStyled>
         Codé avec <span className="heart">&hearts;</span> et React.js
       </FooterStyled>
-      ;
     </Header>
   );
 }

@@ -1,13 +1,16 @@
 import React from "react";
 import { theme } from "../../../../../theme";
 import styled from "styled-components";
+import Header from "../../../../reusable-ui/Header.jsx";
 
 export default function Total({ amountToPay }) {
   return (
-    <TotalStyled>
-      <span className="total">Total</span>
-      <span className="amount">{amountToPay}</span>
-    </TotalStyled>
+    <Header>
+      <TotalStyled>
+        <span className="total">Total</span>
+        <span className="amount">{amountToPay}</span>
+      </TotalStyled>
+    </Header>
   );
 }
 
