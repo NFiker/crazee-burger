@@ -14,6 +14,7 @@ import {
   EMPTY_PRODUCT,
   IMAGE_COMING_SOON,
 } from "../../../../../../enums/product";
+import { find } from "../../../../../../utils/array";
 
 export default function Menu() {
   //State
@@ -27,6 +28,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   //comportements
@@ -35,9 +37,7 @@ export default function Menu() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
 
-    const productClickedOn = menu.find(
-      (product) => product.id === idProductClicked
-    );
+    const productClickedOn = find(idProductClicked, menu);
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
   };
@@ -67,6 +67,13 @@ export default function Menu() {
     }
   };
 
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation();
+    const productToAdd = find(idProductToAdd, menu);
+
+    handleAddToBasket(productToAdd);
+  };
+
   return (
     <SimpleBar>
       <MenuStyled>
@@ -82,6 +89,7 @@ export default function Menu() {
               onClick={() => handleClick(id)}
               isHoverable={isModeAdmin}
               isSelected={checkIfProductClicked(id, productSelected.id)}
+              onAdd={(event) => handleAddButton(event, id)}
             />
             // <Card {...card} /> non utilisable pour des reusable componenents
           );
