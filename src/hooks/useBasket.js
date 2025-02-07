@@ -1,6 +1,6 @@
 import { fakeBasket } from "../fakeData/fakeBasket";
 import { useState } from "react";
-import { deepClone, find } from "../utils/array";
+import { deepClone, find, findIndex } from "../utils/array";
 
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.SMALL);
@@ -24,21 +24,22 @@ export const useBasket = () => {
 
       // 3. update du state
       setBasket(basketUpdated);
-    } else {
-      //    2eme cas: produit présent dans le basket
-      const indexOfBasketProductToIncrement = basket.findIndex(
-        (basketProduct) => basketProduct.id === productToAdd.id
-      );
-
-      // console.log(
-      //   "basket[indexOfBasketProductToIncrement]",
-      //   basketCopy[indexOfBasketProductToIncrement]
-      // );
-
-      basketCopy[indexOfBasketProductToIncrement].quantity += 1;
-      // 3. update du state
-      setBasket(basketCopy);
+      return;
     }
+
+    //    2eme cas: produit présent dans le basket
+    incrementProductAlreadyInBasket(productToAdd, basketCopy);
   };
+
+  const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+    const indexOfBasketProductToIncrement = findIndex(
+      productToAdd.id,
+      basketCopy
+    );
+    basketCopy[indexOfBasketProductToIncrement].quantity += 1;
+    // 3. update du state
+    setBasket(basketCopy);
+  };
+
   return { basket, handleAddToBasket };
 };
