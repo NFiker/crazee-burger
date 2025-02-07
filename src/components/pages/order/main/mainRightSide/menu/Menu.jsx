@@ -29,6 +29,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleAddToBasket,
+    handleDeleteBasketProduct,
   } = useContext(OrderContext);
 
   //comportements
@@ -58,6 +59,7 @@ export default function Menu() {
     const isDeletedProductSelected = productSelected?.id === idProductToDelete;
 
     handleDelete(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
 
     if (isDeletedProductSelected) {
       setProductSelected(EMPTY_PRODUCT);
