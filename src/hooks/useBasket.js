@@ -6,28 +6,16 @@ export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.SMALL);
 
   const handleAddToBasket = (productToAdd) => {
-    // 1. Copie du state
     const basketCopy = deepClone(basket);
 
     const isProductAlreadyInBasket = find(productToAdd.id, basketCopy);
-    // console.log("isProductAlreadyInBasket", isProductAlreadyInBasket);
 
-    // 2. Manip de la copie du state
-    //    1er cas: produit non présent dans le basket
+    //    1er cas: produit non présent dans le basket => on l'ajoute
     if (!isProductAlreadyInBasket) {
-      const newBasketProduct = {
-        ...productToAdd,
-        quantity: 1,
-      };
-
-      const basketUpdated = [newBasketProduct, ...basketCopy];
-
-      // 3. update du state
-      setBasket(basketUpdated);
+      createNewProductInBasket(productToAdd, basketCopy, setBasket);
       return;
     }
-
-    //    2eme cas: produit présent dans le basket
+    //    2eme cas: produit présent dans le basket => on l'incrémente
     incrementProductAlreadyInBasket(productToAdd, basketCopy);
   };
 
@@ -37,9 +25,17 @@ export const useBasket = () => {
       basketCopy
     );
     basketCopy[indexOfBasketProductToIncrement].quantity += 1;
-    // 3. update du state
     setBasket(basketCopy);
   };
+
+  function createNewProductInBasket(productToAdd, basketCopy, setBasket) {
+    const newBasketProduct = {
+      ...productToAdd,
+      quantity: 1,
+    };
+    const basketUpdated = [newBasketProduct, ...basketCopy];
+    setBasket(basketUpdated);
+  }
 
   return { basket, handleAddToBasket };
 };
