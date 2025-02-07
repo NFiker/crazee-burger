@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 
-export default function BasketProducts({ basket }) {
+export default function BasketProducts({ basket, isModeAdmin }) {
+  const handleOnDelete = (id) => {};
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
         <div key={basketProduct.id} className="basket-card">
-          <BasketCard {...basketProduct} />
+          <BasketCard {...basketProduct} isModeAdmin={isModeAdmin} />
         </div>
       ))}
     </BasketProductsStyled>
