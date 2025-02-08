@@ -18,7 +18,7 @@ export default function BasketProducts({
           <BasketCard
             {...basketProduct}
             onDelete={() => handleOnDelete(basketProduct.id)}
-            isModeAdmin={isModeAdmin}
+            isClickable={isModeAdmin}
           />
         </div>
       ))}
