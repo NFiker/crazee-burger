@@ -14,7 +14,7 @@ import {
   EMPTY_PRODUCT,
   IMAGE_COMING_SOON,
 } from "../../../../../../enums/product";
-import { find } from "../../../../../../utils/array";
+import { findObjectById, isEmpty } from "../../../../../../utils/array";
 
 export default function Menu() {
   //State
@@ -38,13 +38,13 @@ export default function Menu() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
 
-    const productClickedOn = find(idProductClicked, menu);
+    const productClickedOn = findObjectById(idProductClicked, menu);
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
   };
 
   //Affichage
-  if (menu.length === 0) {
+  if (isEmpty(menu)) {
     return isModeAdmin ? (
       <EmptyMenuAdmin onReset={resetMenu} />
     ) : (
@@ -71,7 +71,7 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
-    const productToAdd = find(idProductToAdd, menu);
+    const productToAdd = findObjectById(idProductToAdd, menu);
 
     handleAddToBasket(productToAdd);
   };
