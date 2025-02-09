@@ -14,7 +14,7 @@ import {
   EMPTY_PRODUCT,
   IMAGE_COMING_SOON,
 } from "../../../../../../enums/product";
-import { findObjectById, isEmpty } from "../../../../../../utils/array";
+import { isEmpty } from "../../../../../../utils/array";
 
 export default function Menu() {
   //State
@@ -25,22 +25,25 @@ export default function Menu() {
     resetMenu,
     productSelected,
     setProductSelected,
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditRef,
     handleAddToBasket,
     handleDeleteBasketProduct,
+    handleProductSelected,
   } = useContext(OrderContext);
 
   //comportements
-  const handleClick = async (idProductClicked) => {
-    if (!isModeAdmin) return;
-    await setIsCollapsed(false);
-    await setCurrentTabSelected("edit");
 
-    const productClickedOn = findObjectById(idProductClicked, menu);
-    await setProductSelected(productClickedOn);
-    titleEditRef.current.focus();
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDelete(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
+
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT);
+  };
+
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductToAdd);
   };
 
   //Affichage
@@ -51,28 +54,6 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
-
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation();
-
-    // Vérifie si le produit supprimé est celui actuellement sélectionné
-    const isDeletedProductSelected = productSelected?.id === idProductToDelete;
-
-    handleDelete(idProductToDelete);
-    handleDeleteBasketProduct(idProductToDelete);
-
-    if (isDeletedProductSelected) {
-      setProductSelected(EMPTY_PRODUCT);
-    } else {
-      // S'assurer que le ref soit bien attaché sur le nouvel input avant de le focus
-      titleEditRef.current?.focus();
-    }
-  };
-
-  const handleAddButton = (event, idProductToAdd) => {
-    event.stopPropagation();
-    handleAddToBasket(idProductToAdd);
-  };
 
   return (
     <SimpleBar>
@@ -86,7 +67,7 @@ export default function Menu() {
               leftDescription={formatPrice(price)}
               hasDeleteButton={isModeAdmin}
               onDelete={(event) => handleCardDelete(event, id)}
-              onClick={() => handleClick(id)}
+              onClick={isModeAdmin ? () => handleProductSelected(id) : null}
               isHoverable={isModeAdmin}
               isSelected={checkIfProductClicked(id, productSelected.id)}
               onAdd={(event) => handleAddButton(event, id)}

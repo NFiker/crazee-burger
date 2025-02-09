@@ -7,10 +7,16 @@ import OrderContext from "../../../../../context/OrderContext";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketProducts() {
-  const { basket, menu, isModeAdmin, handleDeleteBasketProduct } =
-    useContext(OrderContext);
+  const {
+    basket,
+    menu,
+    isModeAdmin,
+    handleDeleteBasketProduct,
+    handleProductSelected,
+  } = useContext(OrderContext);
 
-  const handleOnDelete = (id) => {
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation();
     handleDeleteBasketProduct(id);
   };
 
@@ -29,8 +35,13 @@ export default function BasketProducts() {
                   ? menuProduct.imageSource
                   : IMAGE_COMING_SOON
               }
-              onDelete={() => handleOnDelete(basketProduct.id)}
+              onDelete={() => handleOnDelete(event, basketProduct.id)}
               isClickable={isModeAdmin}
+              onClick={
+                isModeAdmin
+                  ? () => handleProductSelected(basketProduct.id)
+                  : null
+              }
             />
           </div>
         );
