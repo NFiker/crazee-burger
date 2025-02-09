@@ -5,6 +5,7 @@ import { findObjectById } from "../../../../../utils/array";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { checkIfProductClicked } from "../mainRightSide/menu/helper";
 
 export default function BasketProducts() {
   const {
@@ -13,6 +14,7 @@ export default function BasketProducts() {
     isModeAdmin,
     handleDeleteBasketProduct,
     handleProductSelected,
+    productSelected,
   } = useContext(OrderContext);
 
   const handleOnDelete = (event, id) => {
@@ -42,6 +44,10 @@ export default function BasketProducts() {
                   ? () => handleProductSelected(basketProduct.id)
                   : null
               }
+              isSelected={checkIfProductClicked(
+                basketProduct.id,
+                productSelected.id
+              )}
             />
           </div>
         );
