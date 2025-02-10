@@ -28,3 +28,11 @@ export const createUser = (userId) => {
   // setDoc(CACHETTE, NOURRITURE);
   setDoc(docRef, newDoc);
 };
+
+export const authenticateUser = async (userId) => {
+  const existingUser = await getUser(userId);
+
+  if (!existingUser) {
+    createUser(userId);
+  }
+};
