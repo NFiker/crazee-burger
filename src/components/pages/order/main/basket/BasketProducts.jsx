@@ -1,27 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import { findObjectById } from "../../../../../utils/array";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { checkIfProductClicked } from "../mainRightSide/menu/helper";
 
-export default function BasketProducts({
-  basket,
-  isModeAdmin,
-  handleDeleteBasketProduct,
-}) {
-  const handleOnDelete = (id) => {
+export default function BasketProducts() {
+  const {
+    basket,
+    menu,
+    isModeAdmin,
+    handleDeleteBasketProduct,
+    handleProductSelected,
+    productSelected,
+  } = useContext(OrderContext);
+
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation();
     handleDeleteBasketProduct(id);
   };
 
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <div key={basketProduct.id} className="basket-card">
-          <BasketCard
-            {...basketProduct}
-            onDelete={() => handleOnDelete(basketProduct.id)}
-            isModeAdmin={isModeAdmin}
-          />
-        </div>
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findObjectById(basketProduct.id, menu);
+
+        return (
+          <div key={basketProduct.id} className="basket-card">
+            <BasketCard
+              {...menuProduct}
+              quantity={basketProduct.quantity}
+              imageSource={
+                menuProduct.imageSource
+                  ? menuProduct.imageSource
+                  : IMAGE_COMING_SOON
+              }
+              onDelete={() => handleOnDelete(event, basketProduct.id)}
+              isClickable={isModeAdmin}
+              onClick={
+                isModeAdmin
+                  ? () => handleProductSelected(basketProduct.id)
+                  : null
+              }
+              isSelected={checkIfProductClicked(
+                basketProduct.id,
+                productSelected.id
+              )}
+            />
+          </div>
+        );
+      })}
     </BasketProductsStyled>
   );
 }
