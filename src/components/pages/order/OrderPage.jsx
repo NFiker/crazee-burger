@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
   //State
@@ -19,6 +20,7 @@ export default function OrderPage() {
   const titleEditRef = useRef();
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { username } = useParams();
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
@@ -29,6 +31,7 @@ export default function OrderPage() {
   };
 
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
