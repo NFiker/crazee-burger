@@ -15,6 +15,7 @@ import {
   IMAGE_COMING_SOON,
 } from "../../../../../../enums/product";
 import { isEmpty } from "../../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   //State
@@ -47,6 +48,8 @@ export default function Menu() {
   };
 
   //Affichage
+  if (menu === undefined) return <Loader />;
+
   if (isEmpty(menu)) {
     return isModeAdmin ? (
       <EmptyMenuAdmin onReset={resetMenu} />
