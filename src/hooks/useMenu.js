@@ -17,7 +17,7 @@ export const useMenu = () => {
     syncBothMenus(username, menuUpdated);
   };
 
-  const handleDelete = (productIdDelete) => {
+  const handleDelete = (productIdDelete, username) => {
     // 1. Copie du tableau
     const menuCopy = deepClone(menu);
     // 2. Manip de la copie du tableau
@@ -26,6 +26,7 @@ export const useMenu = () => {
     );
     // 3. Update du state
     setMenu(menuUpdated);
+    syncBothMenus(username, menuUpdated);
   };
 
   const handleEdit = (productBeingEdited) => {

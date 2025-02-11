@@ -20,6 +20,7 @@ import Loader from "./Loader";
 export default function Menu() {
   //State
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -35,7 +36,7 @@ export default function Menu() {
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
-    handleDelete(idProductToDelete);
+    handleDelete(idProductToDelete, username);
     handleDeleteBasketProduct(idProductToDelete);
 
     idProductToDelete === productSelected.id &&
@@ -51,6 +52,8 @@ export default function Menu() {
   if (menu === undefined) return <Loader />;
 
   if (isEmpty(menu)) {
+    console.log("Menu state:", menu);
+
     return isModeAdmin ? (
       <EmptyMenuAdmin onReset={resetMenu} />
     ) : (
@@ -84,7 +87,7 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  height: 100%; //temporaire avant correction z-index
+  height: 100vh; //temporaire avant correction z-index
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
