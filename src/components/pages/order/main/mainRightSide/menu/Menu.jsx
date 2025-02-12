@@ -52,10 +52,8 @@ export default function Menu() {
   if (menu === undefined) return <Loader />;
 
   if (isEmpty(menu)) {
-    console.log("Menu state:", menu);
-
     return isModeAdmin ? (
-      <EmptyMenuAdmin onReset={resetMenu} />
+      <EmptyMenuAdmin onReset={() => resetMenu(username)} />
     ) : (
       <EmptyMenuClient />
     );
