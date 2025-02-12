@@ -29,7 +29,7 @@ export const useMenu = () => {
     syncBothMenus(username, menuUpdated);
   };
 
-  const handleEdit = (productBeingEdited) => {
+  const handleEdit = (productBeingEdited, username) => {
     // 1. Copie du tableau
     const menuCopy = deepClone(menu);
 
@@ -41,6 +41,7 @@ export const useMenu = () => {
 
     // 3. Update du state
     setMenu(menuCopy);
+    syncBothMenus(username, menuCopy);
   };
 
   const resetMenu = (username) => {

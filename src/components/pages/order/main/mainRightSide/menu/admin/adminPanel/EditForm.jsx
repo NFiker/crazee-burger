@@ -11,8 +11,13 @@ import Form from "../../../../../../../reusable-ui/Form.jsx";
 
 export default function EditForm() {
   // State
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
-    useContext(OrderContext);
+  const {
+    username,
+    productSelected,
+    setProductSelected,
+    handleEdit,
+    titleEditRef,
+  } = useContext(OrderContext);
   const inputTexts = getInputTextsConfig(productSelected);
 
   // Comportements
@@ -22,7 +27,7 @@ export default function EditForm() {
     const productBeingUpdated = { ...productSelected, [name]: value };
 
     setProductSelected(productBeingUpdated);
-    handleEdit(productBeingUpdated);
+    handleEdit(productBeingUpdated, username);
     // setNewProduct(EMPTY_PRODUCT);
     // displaySuccessMessage();
   };
