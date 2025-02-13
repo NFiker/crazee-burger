@@ -41,16 +41,16 @@ export default function OrderPage() {
 
   const initialiseBasket = () => {
     const BasketReceived = getLocalStorage(username);
-    console.log("BasketReceived", BasketReceived);
     if (BasketReceived) setBasket(BasketReceived);
   };
 
-  useEffect(() => {
-    initialiseMenu();
-  }, []);
+  const initialiseUserSession = async () => {
+    await initialiseMenu();
+    initialiseBasket();
+  };
 
   useEffect(() => {
-    initialiseBasket();
+    initialiseUserSession();
   }, []);
 
   const orderContextValue = {
