@@ -18,6 +18,7 @@ const MainStyled = styled.div`
   display: grid;
   background: ${theme.colors.background_white};
   height: calc(95vh - 10vh);
+  height: 100%
   flex: 1;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};

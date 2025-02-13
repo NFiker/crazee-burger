@@ -6,34 +6,33 @@ import styled from "styled-components";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
+import { authenticateUser } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   // State
-  const [inputValue, setInputValue] = useState("NFiker");
+  const [username, setUsername] = useState("NFiker");
   const navigate = useNavigate();
 
   //Comportements
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setInputValue("");
-    navigate(`order/${inputValue}`);
+    authenticateUser(username); //await non requis car username de state utilisé
+    setUsername("");
+    navigate(`order/${username}`);
   };
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
+    setUsername(e.target.value);
   };
 
   //Affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div>
-        <h1>Bienvenue chez nous</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
+      <Welcome />
       <div>
         <TextInput
-          value={inputValue}
+          value={username}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required

@@ -11,7 +11,7 @@ import { EMPTY_PRODUCT } from "../../enums/product";
 import React from "react";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
     //State
 
     //Comportements
@@ -32,6 +32,8 @@ const Form = React.forwardRef(
               // Icon={input.Icon}
               {...input}
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               version="minimalist"
               ref={ref && input.name === "title" ? ref : null}
             />

@@ -14,6 +14,4 @@ export const removeObjectById = (idOfItemToRemove, array) => {
   return array.filter((item) => item.id !== idOfItemToRemove);
 };
 
-export const isEmpty = (array) => {
-  array.length === 0;
-};
+export const isEmpty = (array) => array.length === 0;
