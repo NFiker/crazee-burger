@@ -1,13 +1,14 @@
 // import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../../../context/OrderContext";
-import { useContext } from "react";
-import { getInputTextsConfig } from "./getInputTextsConfig.jsx";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview.jsx";
 import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
 import { theme } from "../../../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
 import Form from "../../../../../../../reusable-ui/Form.jsx";
+import SavingMessage from "./SavingMessage.jsx";
+import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
 
 export default function EditForm() {
   // State
@@ -18,7 +19,9 @@ export default function EditForm() {
     handleEdit,
     titleEditRef,
   } = useContext(OrderContext);
-  const inputTexts = getInputTextsConfig(productSelected);
+
+  const [valueOnFocus, setValueOnFocus] = useState();
+  const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage();
 
   // Comportements
   const handleChange = (event) => {
@@ -28,39 +31,30 @@ export default function EditForm() {
 
     setProductSelected(productBeingUpdated);
     handleEdit(productBeingUpdated, username);
-    // setNewProduct(EMPTY_PRODUCT);
-    // displaySuccessMessage();
   };
+
+  //Comportements
+  const handleOnFocus = (event) => {
+    const inputValueOnFocus = event.target.value;
+    setValueOnFocus(inputValueOnFocus);
+  };
+
+  const handleOnBlur = (event) => {
+    const valueOnBlur = event.target.value;
+    if (valueOnFocus !== valueOnBlur) displaySuccessMessage();
+  };
+  console.log("isSaved :", isSaved);
 
   // Affichage
   return (
-    // <EditFormStyled>
-    //   <ImagePreview
-    //     title={productSelected.title}
-    //     imageSource={productSelected.imageSource}
-    //   />
-    //   <div className="input-fields">
-    //     {inputTexts.map((input) => (
-    //       <TextInput
-    //         key={input.id}
-    //         // name={input.name}
-    //         // value={input.value}
-    //         // placeholder={input.placeholder}
-    //         // Icon={input.Icon}
-    //         {...input}
-    //         onChange={handleChange}
-    //         version="minimalist"
-    //         ref={input.name === "title" ? titleEditRef : null}
-    //       />
-    //     ))}
-    //   </div>
-    //   {/* <HintMessage /> */}
-    //   <div className="submit">
-    //     <EditInfoMessage />
-    //   </div>
-    // </EditFormStyled>
-    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
-      <EditInfoMessage />
+    <Form
+      product={productSelected}
+      onChange={handleChange}
+      ref={titleEditRef}
+      onFocus={handleOnFocus}
+      onBlur={handleOnBlur}
+    >
+      {isSaved ? <SavingMessage /> : <EditInfoMessage />}
     </Form>
   );
 }
