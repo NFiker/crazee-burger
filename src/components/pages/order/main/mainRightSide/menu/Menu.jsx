@@ -85,7 +85,7 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  height: 100vh; //temporaire avant correction z-index
+  height: 100%; //temporaire avant correction z-index
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
