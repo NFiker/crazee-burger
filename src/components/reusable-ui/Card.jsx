@@ -4,6 +4,7 @@ import Button from "./Button";
 import { formatPrice } from "../../utils/maths";
 import { TiDelete } from "react-icons/ti";
 import { css } from "styled-components";
+import { fadeInFromRight } from "../../theme/animations";
 
 export default function Card({
   imageSource,
@@ -86,6 +87,7 @@ const CardStyled = styled.div`
       padding: 0;
       border: none;
       background: none;
+      animation: ${fadeInFromRight} ${theme.animations.speed.slow} ease-out;
 
       .icon {
         height: 100%;
