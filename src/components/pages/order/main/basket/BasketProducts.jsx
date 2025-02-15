@@ -33,7 +33,7 @@ export default function BasketProducts() {
           return (
             <CSSTransition
               appear={true}
-              classNames={"anim-step"}
+              classNames={"animation-basket"}
               key={basketProduct.id}
               timeout={500}
             >
@@ -57,7 +57,7 @@ export default function BasketProducts() {
                     basketProduct.id,
                     productSelected.id
                   )}
-                  className={"anim-card"}
+                  className={"card"}
                 />
               </div>
             </CSSTransition>
@@ -74,31 +74,31 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: auto;
 
-  .anim-step-appear,
-  .anim-step-enter {
-    .anim-card {
+  .animation-basket-appear,
+  .animation-basket-enter {
+    .card {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
-  .anim-step-appear-active,
-  .anim-step-enter-active {
-    .anim-card {
+  .animation-basket-appear-active,
+  .animation-basket-enter-active {
+    .card {
       transition: 0.5s;
       transform: translateX(0px);
       opacity: 100%;
     }
   }
 
-  .anim-step-exit {
-    .anim-card {
+  .animation-basket-exit {
+    .card {
       transition: 0.2s;
       transform: translateX(0px);
       opacity: 100%;
     }
   }
-  .anim-step-exit-active {
-    .anim-card {
+  .animation-basket-exit-active {
+    .card {
       transition: 0.5s;
       transform: translateX(-100px);
       opacity: 0%;
