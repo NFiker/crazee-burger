@@ -7,6 +7,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 import { checkIfProductClicked } from "../mainRightSide/menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { basketAnimation } from "../../../../../theme/animations";
 
 export default function BasketProducts() {
   const {
@@ -37,7 +38,7 @@ export default function BasketProducts() {
               key={basketProduct.id}
               timeout={500}
             >
-              <div className="basket-card">
+              <div className="card-container">
                 <BasketCard
                   {...menuProduct}
                   quantity={basketProduct.quantity}
@@ -74,38 +75,7 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: auto;
 
-  .animation-basket-appear,
-  .animation-basket-enter {
-    .card {
-      transform: translateX(100px);
-      opacity: 0%;
-    }
-  }
-  .animation-basket-appear-active,
-  .animation-basket-enter-active {
-    .card {
-      transition: 0.5s;
-      transform: translateX(0px);
-      opacity: 100%;
-    }
-  }
-
-  .animation-basket-exit {
-    .card {
-      transition: 0.2s;
-      transform: translateX(0px);
-      opacity: 100%;
-    }
-  }
-  .animation-basket-exit-active {
-    .card {
-      transition: 0.5s;
-      transform: translateX(-100px);
-      opacity: 0%;
-    }
-  }
-
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
 
@@ -116,4 +86,5 @@ const BasketProductsStyled = styled.div`
       margin-bottom: 20px;
     }
   }
+  ${basketAnimation};
 `;
