@@ -16,6 +16,8 @@ import {
 } from "../../../../../../enums/product";
 import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader";
+import { menuAnimation } from "../../../../../../theme/animations";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function Menu() {
   //State
@@ -61,30 +63,32 @@ export default function Menu() {
 
   return (
     <SimpleBar>
-      <MenuStyled>
+      <TransitionGroup component={MenuStyled} className="menu">
         {menu.map(({ id, title, imageSource, price }) => {
           return (
-            <Card
-              key={id}
-              title={title}
-              imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-              leftDescription={formatPrice(price)}
-              hasDeleteButton={isModeAdmin}
-              onDelete={(event) => handleCardDelete(event, id)}
-              onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-              isHoverable={isModeAdmin}
-              isSelected={checkIfProductClicked(id, productSelected.id)}
-              onAdd={(event) => handleAddButton(event, id)}
-            />
+            <CSSTransition classNames="menu-animation" key={id} timeout={300}>
+              <Card
+                title={title}
+                imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                leftDescription={formatPrice(price)}
+                hasDeleteButton={isModeAdmin}
+                onDelete={(event) => handleCardDelete(event, id)}
+                onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+                isHoverable={isModeAdmin}
+                isSelected={checkIfProductClicked(id, productSelected.id)}
+                onAdd={(event) => handleAddButton(event, id)}
+              />
+            </CSSTransition>
             // <Card {...card} /> non utilisable pour des reusable componenents
           );
         })}
-      </MenuStyled>
+      </TransitionGroup>
     </SimpleBar>
   );
 }
 
 const MenuStyled = styled.div`
+  background: ${theme.colors.background_white};
   height: 100%; //temporaire avant correction z-index
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -93,4 +97,7 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: ${theme.shadows.strong};
+  /* overflow-y: scroll; */
+
+  ${menuAnimation}
 `;
