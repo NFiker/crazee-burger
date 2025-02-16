@@ -66,7 +66,7 @@ export default function Menu() {
       <TransitionGroup component={MenuStyled} className="menu">
         {menu.map(({ id, title, imageSource, price }) => {
           return (
-            <CSSTransition classNames="menu-animation" key={id} timeout={300}>
+            <CSSTransition classNames="menu-animation" key={id} timeout={500}>
               <Card
                 title={title}
                 imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
@@ -89,7 +89,8 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
-  height: 100%; //temporaire avant correction z-index
+  min-height: 85vh;
+  height: 100%; //temporaire avant correction z-index: ;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
