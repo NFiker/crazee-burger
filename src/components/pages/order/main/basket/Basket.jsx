@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import Total from "./Total.jsx";
+import BasketHeader from "./basketHeader/BasketHeader.jsx";
 import BasketFooter from "./BasketFooter.jsx";
 import BasketBody from "./basketBody/BasketBody.jsx";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <Total />
+      <BasketHeader />
       <BasketBody />
       <BasketFooter />
     </BasketStyled>
