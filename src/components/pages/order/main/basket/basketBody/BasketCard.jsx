@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../../utils/maths";
-import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { formatPrice } from "../../../../../../utils/maths";
+import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import { css } from "styled-components";
 
 export default function BasketCard({

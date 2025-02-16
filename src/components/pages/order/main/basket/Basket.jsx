@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Total from "./Total.jsx";
-import Footer from "./Footer.jsx";
+import BasketFooter from "./BasketFooter.jsx";
 import BasketBody from "./basketBody/BasketBody.jsx";
 
 export default function Basket() {
@@ -9,7 +9,7 @@ export default function Basket() {
     <BasketStyled>
       <Total />
       <BasketBody />
-      <Footer />
+      <BasketFooter />
     </BasketStyled>
   );
 }
@@ -27,7 +27,7 @@ const BasketStyled = styled.div`
     top: 0;
   }
 
-  .footer {
+  .BasketFooter {
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     position: sticky;
     bottom: 0;
