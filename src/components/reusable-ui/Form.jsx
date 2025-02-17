@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { forwardRef } from "react";
 import { theme } from "../../theme";
 import TextInput from "./TextInput.jsx";
 import Button from "./Button.jsx";
@@ -7,13 +7,23 @@ import ImagePreview from "../pages/order/main/mainRightSide/menu/admin/adminPane
 import SubmitMessage from "../pages/order/main/mainRightSide/menu/admin/adminPanel/SubmitMessage.jsx";
 import { getInputTextsConfig } from "../pages/order/main/mainRightSide/menu/admin/adminPanel/getInputTextsConfig.jsx";
 import { EMPTY_PRODUCT } from "../../enums/product";
+import SelectInput from "./SelectInput.jsx";
+
+const isAvailableOptions = [
+  { value: true, label: "En stock" },
+  { value: false, label: "En rupture" },
+];
+
+const isPublicisedOptions = [
+  { value: true, label: "Avec pub" },
+  { value: false, label: "Sans pub" },
+];
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
-    //State
+    //State (vide)
 
-    //Comportements
-
+    //Comportements (vide)
     const inputTexts = getInputTextsConfig(product);
 
     //Affichage
@@ -37,14 +47,18 @@ const Form = React.forwardRef(
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
-          <select name="isAvailable" className="is-available" id="3">
-            <option value={true}>En stock</option>
-            <option value={false}>En rupture</option>
-          </select>
-          <select name="isPublicised" className="is-publicised" id="4">
-            <option value={true}>Avec pub</option>
-            <option value={false}>Sans pub</option>
-          </select>
+          <SelectInput
+            name={isAvailableOptions}
+            options={isAvailableOptions}
+            className={"is-available"}
+            id="3"
+          />
+          <SelectInput
+            name={isPublicisedOptions}
+            options={isPublicisedOptions}
+            className={"is-publicised"}
+            id="4"
+          />
         </div>
         <div className="form-footer">{children}</div>
       </FormStyled>
@@ -71,10 +85,11 @@ const FormStyled = styled.form`
 
   .title {
     grid-column: span 3;
-  } /* Title */
+  }
+
   .image-source {
     grid-column: span 3;
-  } /* Image Source */
+  }
 
   .input-fields {
     grid-area: input-fields;
