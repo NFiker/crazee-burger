@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import OrderContext from "../../context/OrderContext";
-import { useContext, useState } from "react";
+import React from "react";
 import { theme } from "../../theme";
 import TextInput from "./TextInput.jsx";
 import Button from "./Button.jsx";
@@ -8,7 +7,6 @@ import ImagePreview from "../pages/order/main/mainRightSide/menu/admin/adminPane
 import SubmitMessage from "../pages/order/main/mainRightSide/menu/admin/adminPanel/SubmitMessage.jsx";
 import { getInputTextsConfig } from "../pages/order/main/mainRightSide/menu/admin/adminPanel/getInputTextsConfig.jsx";
 import { EMPTY_PRODUCT } from "../../enums/product";
-import React from "react";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
@@ -35,6 +33,7 @@ const Form = React.forwardRef(
               onFocus={onFocus}
               onBlur={onBlur}
               version="minimalist"
+              className={input.className}
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
@@ -62,11 +61,34 @@ const FormStyled = styled.form`
   grid-column-gap: 20px;
   grid-row-gap: 8px;
 
+  .title {
+    grid-area: title;
+  }
+  .image-source {
+    grid-area: image-source;
+  }
+  .price {
+    grid-area: price;
+  }
+  .available {
+    grid-area: available;
+  }
+  .publicised {
+    grid-area: publicised;
+  }
+
   .input-fields {
     grid-area: input-fields;
     display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-self: center;
-    grid-row-gap: 5px;
+    grid-gap: 8px;
+
+    grid-template-areas:
+      "title   title   title"
+      "image-source   image-source   image-source"
+      "price   available   publicised";
   }
 
   .form-footer {

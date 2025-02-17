@@ -1,6 +1,8 @@
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
+import { FiPackage } from "react-icons/fi";
+import { GoMegaphone } from "react-icons/go";
 
 export const getInputTextsConfig = (newProduct) => [
   {
@@ -10,6 +12,7 @@ export const getInputTextsConfig = (newProduct) => [
     placeholder: "Nom du produit (ex: Super Burger)",
     Icon: <FaHamburger />,
     version: "minimalist",
+    className: "title",
   },
   {
     id: "1",
@@ -19,6 +22,7 @@ export const getInputTextsConfig = (newProduct) => [
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     Icon: <BsFillCameraFill />,
     version: "minimalist",
+    className: "image-source",
   },
   {
     id: "2",
@@ -27,5 +31,24 @@ export const getInputTextsConfig = (newProduct) => [
     placeholder: "Prix",
     Icon: <MdOutlineEuro />,
     version: "minimalist",
+    className: "price",
+  },
+  {
+    id: "3",
+    name: "available",
+    value: newProduct.available,
+    placeholder: "disponible",
+    Icon: <FiPackage />,
+    version: "minimalist",
+    className: "available",
+  },
+  {
+    id: "4",
+    name: "publicised",
+    value: newProduct.publicised,
+    placeholder: "publicité",
+    Icon: <GoMegaphone />,
+    version: "minimalist",
+    className: "publicised",
   },
 ];
