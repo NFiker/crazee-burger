@@ -17,9 +17,10 @@ export default function LoginForm() {
   //Comportements
   const handleSubmit = async (e) => {
     e.preventDefault();
-    authenticateUser(username); //await non requis car username de state utilisé
+    const userReceived = await authenticateUser(username);
+
     setUsername("");
-    navigate(`order/${username}`);
+    navigate(`order/${userReceived.username}`);
   };
 
   const handleChange = (e) => {
