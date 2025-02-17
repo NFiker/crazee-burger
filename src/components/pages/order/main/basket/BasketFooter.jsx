@@ -5,14 +5,14 @@ import { theme } from "../../../../../theme";
 export default function Footer() {
   return (
     <Header>
-      <FooterStyled>
+      <BasketFooterStyled>
         Codé avec <span className="heart">&hearts;</span> et React.js
-      </FooterStyled>
+      </BasketFooterStyled>
     </Header>
   );
 }
 
-const FooterStyled = styled.div`
+const BasketFooterStyled = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
