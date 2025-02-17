@@ -6,7 +6,7 @@ import ImagePreview from "./ImagePreview.jsx";
 import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
 import { theme } from "../../../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
-import Form from "../../../../../../../reusable-ui/Form.jsx";
+import Form from "./Form.jsx";
 import SavingMessage from "./SavingMessage.jsx";
 import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
 
@@ -43,7 +43,6 @@ export default function EditForm() {
     const valueOnBlur = event.target.value;
     if (valueOnFocus !== valueOnBlur) displaySuccessMessage();
   };
-  console.log("isSaved :", isSaved);
 
   // Affichage
   return (
