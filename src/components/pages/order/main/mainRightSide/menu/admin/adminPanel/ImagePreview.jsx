@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../../../../theme";
+import { fadeIn } from "../../../../../../../../theme/animations";
 
 export default function ImagePreview({ title, imageSource }) {
   return (
@@ -15,7 +16,6 @@ export default function ImagePreview({ title, imageSource }) {
 }
 
 const ImagePreviewStyled = styled.div`
-  /* background: red; */
   grid-area: image-preview;
 
   img {
@@ -23,6 +23,7 @@ const ImagePreviewStyled = styled.div`
     width: 100%;
     object-fit: contain;
     object-position: center;
+    animation: ${fadeIn} 1s;
   }
 
   .empty-image {
