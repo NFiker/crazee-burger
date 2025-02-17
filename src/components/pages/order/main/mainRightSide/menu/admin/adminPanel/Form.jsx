@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import React, { forwardRef } from "react";
-import { theme } from "../../theme";
-import TextInput from "./TextInput.jsx";
-import Button from "./Button.jsx";
-import ImagePreview from "../pages/order/main/mainRightSide/menu/admin/adminPanel/ImagePreview.jsx";
-import SubmitMessage from "../pages/order/main/mainRightSide/menu/admin/adminPanel/SubmitMessage.jsx";
-import { getInputTextsConfig } from "../pages/order/main/mainRightSide/menu/admin/adminPanel/getInputTextsConfig.jsx";
-import { EMPTY_PRODUCT } from "../../enums/product";
-import SelectInput from "./SelectInput.jsx";
+import { theme } from "../../../../../../../../theme/index.js";
+import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
+import Button from "../../../../../../../reusable-ui/Button.jsx";
+import ImagePreview from "./ImagePreview.jsx";
+import SubmitMessage from "./SubmitMessage.jsx";
+import {
+  getInputSelectsConfig,
+  getInputTextsConfig,
+} from "./getInputConfig.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../../../enums/product.js";
+import SelectInput from "../../../../../../../reusable-ui/SelectInput.jsx";
 
 const isAvailableOptions = [
   { value: true, label: "En stock" },
@@ -25,6 +28,7 @@ const Form = React.forwardRef(
 
     //Comportements (vide)
     const inputTexts = getInputTextsConfig(product);
+    const inputSelects = getInputSelectsConfig(product);
 
     //Affichage
     return (
@@ -47,18 +51,9 @@ const Form = React.forwardRef(
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
-          <SelectInput
-            name={isAvailableOptions}
-            options={isAvailableOptions}
-            className={"is-available"}
-            id="3"
-          />
-          <SelectInput
-            name={isPublicisedOptions}
-            options={isPublicisedOptions}
-            className={"is-publicised"}
-            id="4"
-          />
+          {inputSelects.map((inputSelect) => (
+            <SelectInput key={inputSelect.id} {...inputSelect} />
+          ))}
         </div>
         <div className="form-footer">{children}</div>
       </FormStyled>

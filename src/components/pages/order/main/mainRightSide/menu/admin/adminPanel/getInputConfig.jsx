@@ -3,6 +3,10 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
 import { GoMegaphone } from "react-icons/go";
+import {
+  isAvailableOptions,
+  isPublicisedOptions,
+} from "../../../../../../../../enums/select";
 
 export const getInputTextsConfig = (newProduct) => [
   {
@@ -32,5 +36,26 @@ export const getInputTextsConfig = (newProduct) => [
     Icon: <MdOutlineEuro />,
     version: "minimalist",
     className: "price",
+  },
+];
+
+export const getInputSelectsConfig = (newProduct) => [
+  {
+    id: "3",
+    name: "isAvailable",
+    options: isAvailableOptions,
+    value: newProduct.isAvailable,
+    // Icon: <FiPackage />,
+    // version: "minimalist",
+    className: "is-available",
+  },
+  {
+    id: "4",
+    name: "isPublicised",
+    options: isPublicisedOptions,
+    value: newProduct.isPublicised,
+    // Icon: <GoMegaphone />,
+    // version: "minimalist",
+    className: "is-publicised",
   },
 ];
