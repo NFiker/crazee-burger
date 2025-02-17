@@ -37,6 +37,14 @@ const Form = React.forwardRef(
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
+          <select name="isAvailable" className="is-available" id="3">
+            <option value={true}>En stock</option>
+            <option value={false}>En rupture</option>
+          </select>
+          <select name="isPublicised" className="is-publicised" id="4">
+            <option value={true}>Avec pub</option>
+            <option value={false}>Sans pub</option>
+          </select>
         </div>
         <div className="form-footer">{children}</div>
       </FormStyled>
@@ -62,20 +70,11 @@ const FormStyled = styled.form`
   grid-row-gap: 8px;
 
   .title {
-    grid-area: title;
-  }
+    grid-column: span 3;
+  } /* Title */
   .image-source {
-    grid-area: image-source;
-  }
-  .price {
-    grid-area: price;
-  }
-  .available {
-    grid-area: available;
-  }
-  .publicised {
-    grid-area: publicised;
-  }
+    grid-column: span 3;
+  } /* Image Source */
 
   .input-fields {
     grid-area: input-fields;
@@ -84,11 +83,28 @@ const FormStyled = styled.form`
     grid-template-columns: repeat(3, 1fr);
     align-self: center;
     grid-gap: 8px;
+    grid-auto-flow: dense; /* Place intelligemment les éléments */
 
-    grid-template-areas:
+    /* .title {
+      grid-area: title;
+    }
+    .image-source {
+      grid-area: image-source;
+    }
+    .price {
+      grid-area: price;
+    }
+    .is-available {
+      grid-area: is-available;
+    }
+    .is-publicised {
+      grid-area: is-publicised;
+    } */
+
+    /* grid-template-areas:
       "title   title   title"
       "image-source   image-source   image-source"
-      "price   available   publicised";
+      "price   is-available   is-publicised"; */
   }
 
   .form-footer {

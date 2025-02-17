@@ -33,22 +33,4 @@ export const getInputTextsConfig = (newProduct) => [
     version: "minimalist",
     className: "price",
   },
-  {
-    id: "3",
-    name: "available",
-    value: newProduct.available,
-    placeholder: "disponible",
-    Icon: <FiPackage />,
-    version: "minimalist",
-    className: "available",
-  },
-  {
-    id: "4",
-    name: "publicised",
-    value: newProduct.publicised,
-    placeholder: "publicité",
-    Icon: <GoMegaphone />,
-    version: "minimalist",
-    className: "publicised",
-  },
 ];
