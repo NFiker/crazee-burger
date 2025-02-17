@@ -56,6 +56,8 @@ const Form = React.forwardRef(
               key={inputSelect.id}
               {...inputSelect}
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           ))}
         </div>

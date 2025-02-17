@@ -7,6 +7,8 @@ export default function SelectInput({
   className,
   id,
   onChange,
+  onFocus,
+  onBlur,
 }) {
   return (
     <SelectInputStyled
@@ -15,6 +17,8 @@ export default function SelectInput({
       className={className}
       id={id}
       onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
     >
       {options.map(({ value, label }) => (
         <option key={label} value={value}>
