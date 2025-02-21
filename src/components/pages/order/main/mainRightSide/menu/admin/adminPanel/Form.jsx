@@ -53,8 +53,8 @@ const Form = React.forwardRef(
           ))}
           {inputSelects.map((inputSelect) => (
             <SelectInput
-              key={inputSelect.id}
               {...inputSelect}
+              key={inputSelect.id}
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
