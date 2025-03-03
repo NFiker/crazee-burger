@@ -13,6 +13,7 @@ import { checkIfProductClicked } from "./helper";
 import {
   EMPTY_PRODUCT,
   IMAGE_COMING_SOON,
+  IMAGE_NO_STOCK,
 } from "../../../../../../enums/product";
 import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader";
@@ -77,6 +78,8 @@ export default function Menu() {
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductClicked(id, productSelected.id)}
                 onAdd={(event) => handleAddButton(event, id)}
+                overlapImageSource={IMAGE_NO_STOCK}
+                isOverlapImageVisible={true}
               />
             </CSSTransition>
             // <Card {...card} /> non utilisable pour des reusable componenents
