@@ -1,14 +1,14 @@
 // import HintMessage from "./HintMessage";
-import OrderContext from "../../../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../../context/OrderContext.js";
 import { useState, useContext } from "react";
 import styled from "styled-components";
-import ImagePreview from "./ImagePreview.jsx";
-import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
-import { theme } from "../../../../../../../../theme";
-import EditInfoMessage from "./EditInfoMessage";
-import Form from "../../../../../../../reusable-ui/Form.jsx";
+import ImagePreview from "../form/ImagePreview.jsx";
+import TextInput from "../../../../../../../../reusable-ui/TextInput.jsx";
+import { theme } from "../../../../../../../../../theme/index.js";
+import EditInfoMessage from "./EditInfoMessage.jsx";
+import Form from "../form/Form.jsx";
 import SavingMessage from "./SavingMessage.jsx";
-import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
+import { useSuccessMessage } from "../../../../../../../../../hooks/useSuccessMessage.js";
 
 export default function EditForm() {
   // State
@@ -43,7 +43,6 @@ export default function EditForm() {
     const valueOnBlur = event.target.value;
     if (valueOnFocus !== valueOnBlur) displaySuccessMessage();
   };
-  console.log("isSaved :", isSaved);
 
   // Affichage
   return (

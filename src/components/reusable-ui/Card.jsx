@@ -4,7 +4,7 @@ import Button from "./Button";
 import { formatPrice } from "../../utils/maths";
 import { TiDelete } from "react-icons/ti";
 import { css } from "styled-components";
-import { fadeInFromRight } from "../../theme/animations";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
 
 export default function Card({
   imageSource,
@@ -16,6 +16,8 @@ export default function Card({
   isHoverable,
   isSelected,
   onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
 }) {
   return (
     <CardStyled
@@ -35,8 +37,19 @@ export default function Card({
         )}
 
         <div className="image">
-          <img src={imageSource} alt={title} />
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img
+                className={"overlap-image"}
+                src={overlapImageSource}
+                alt="overlap"
+              />
+            </div>
+          )}
+          <img className={imageSource} src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
@@ -118,6 +131,31 @@ const CardStyled = styled.div`
         height: 130px;
         object-fit: contain;
       }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} 0.5s;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      }
     }
 
     .title {
@@ -171,8 +209,8 @@ const CardStyled = styled.div`
 
 const hoverableStyle = css`
   &:hover {
-    transform: scale(1.05);
-    transition: ease-out 0.4s;
+    /* transform: scale(1.05);
+    transition: ease-out 0.4s; */
     box-shadow: ${theme.shadows.orangeHighlight};
     border-radius: ${theme.borderRadius.extraRound};
     cursor: pointer;

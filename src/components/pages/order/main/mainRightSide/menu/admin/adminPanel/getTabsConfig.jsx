@@ -2,9 +2,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { GiEternalLove } from "react-icons/gi";
 import { BiSun } from "react-icons/bi";
-import AddForm from "./AddForm";
-import EditForm from "./EditForm";
-import HintMessage from "./HintMessage";
+import AddForm from "./addForm/AddForm.jsx";
+import EditForm from "./editForm/EditForm.jsx";
+import HintMessage from "./editForm/HintMessage.jsx";
 
 export const getTabsConfig = (hasBeenClicked) => [
   {
