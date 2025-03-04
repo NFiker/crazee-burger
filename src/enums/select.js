@@ -1,9 +1,9 @@
 export const isAvailableOptions = [
-  { value: true, label: "En stock" },
-  { value: false, label: "En rupture" },
+  { optionValue: true, label: "En stock" },
+  { optionValue: false, label: "En rupture" },
 ];
 
 export const isPublicisedOptions = [
-  { value: true, label: "Avec pub" },
-  { value: false, label: "Sans pub" },
+  { optionValue: true, label: "Avec pub" },
+  { optionValue: false, label: "Sans pub" },
 ];

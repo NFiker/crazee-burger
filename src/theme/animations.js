@@ -16,12 +16,12 @@ export const fadeInFromTop = keyframes`
     position: absolute;
     z-index: -1;
     opacity: 0;
-    transform: translateX(-40%);
+    transform: translateY(-40%);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 `;
 
