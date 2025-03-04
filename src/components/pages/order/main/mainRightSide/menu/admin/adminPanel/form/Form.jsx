@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import React, { forwardRef } from "react";
-import { theme } from "../../../../../../../../theme/index.js";
-import TextInput from "../../../../../../../reusable-ui/TextInput.jsx";
-import Button from "../../../../../../../reusable-ui/Button.jsx";
+import { theme } from "../../../../../../../../../theme/index.js";
+import TextInput from "../../../../../../../../reusable-ui/TextInput.jsx";
+import Button from "../../../../../../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
-import SubmitMessage from "./SubmitMessage.jsx";
-import { EMPTY_PRODUCT } from "../../../../../../../../enums/product.js";
-import SelectInput from "../../../../../../../reusable-ui/SelectInput.jsx";
+import SubmitMessage from "../addForm/SubmitMessage.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../../../../enums/product.js";
+import SelectInput from "../../../../../../../../reusable-ui/SelectInput.jsx";
 import { Inputs } from "./Inputs.jsx";
 
 const Form = React.forwardRef(
