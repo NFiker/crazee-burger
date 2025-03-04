@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import { css } from "styled-components";
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.jsx";
@@ -36,7 +35,7 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">{price}</span>
         </div>
         <div className="quantity">
           <CasinoEffect count={`x ${quantity}`} />
